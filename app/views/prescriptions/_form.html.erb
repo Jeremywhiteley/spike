@@ -1,4 +1,4 @@
-<%= form_for(@prescription) do |f| %>
+<%= simple_form_for(@prescription, :html => {:class => 'form-horizontal' }) do |f| %>
   <% if @prescription.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
@@ -11,23 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :patient_id %><br />
-    <%= f.select("patient_id", Person.all.collect {|p| [ p.name, p.id ] }) %>
-  </div>
-  <div class="field">
-    <%= f.label :prescriber_id %><br />
-    <%= f.select("prescriber_id", Person.all.collect {|p| [ p.name, p.id ] }) %>
-  </div>
-  <div class="field">
-    <%= f.label :drug_id %><br />
-    <%= f.select("drug_id", Drug.all.collect {|p| [ p.name, p.id ] }) %>
-  </div>
-  <div class="field">
-    <%= f.label :when_written %><br />
-    <%= f.datetime_select :when_written %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.input :patient_id, :collection => Person.all.collect {|p| [ p.name, p.id ] } %>
+    <%= f.input :prescriber_id, :collection => Person.all.collect {|p| [ p.name, p.id ] } %>
+    <%= f.input :drug_id, :collection => Drug.all.collect {|p| [ p.name, p.id ] } %>
+    <%= f.input :when_written %>
+    <div class="control-group controls">
+      <%= f.button :submit, :class => "btn btn-primary" %>
+      <%= link_to 'Cancel', prescriptions_path %>
+    </div>
 <% end %>

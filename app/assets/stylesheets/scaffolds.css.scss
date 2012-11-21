@@ -30,3 +30,9 @@
     list-style: square;
   }
 }
+
+/* Bootstrap's default 220px selects make the Rails datetime chooser
+   way too wide.  */
+select.datetime {
+  width: auto;
+}
