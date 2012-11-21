@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  patient: :one
+  prescriber: :one
+  drug: :one
+  when_written: 2012-11-21 13:12:52
+
+two:
+  patient: :two
+  prescriber: :two
+  drug: :two
+  when_written: 2012-11-21 13:12:52
