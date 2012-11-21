@@ -1,4 +1,7 @@
 PdmpCore::Application.routes.draw do
+  resources :drugs
+
+
   resources :people
 
 
