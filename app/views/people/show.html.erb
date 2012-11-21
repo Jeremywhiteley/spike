@@ -7,7 +7,7 @@
 
 <% if @person.prescriptions_received.any? %>
 <p><b>Prescriptions Received</b>
-  <table>
+  <table class="table table-condensed">
     <tr>
       <th>Drug</th>
       <th>Prescriber</th>
@@ -27,7 +27,7 @@
 
 <% if @person.prescriptions_written.any? %>
 <p><b>Prescriptions Written</b>
-  <table>
+  <table class="table table-condensed">
     <tr>
       <th>Drug</th>
       <th>Patient</th>
