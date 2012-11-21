@@ -5,6 +5,45 @@
   <%= @person.name %>
 </p>
 
+<% if @person.prescriptions_received.any? %>
+<p><b>Prescriptions Received</b>
+  <table>
+    <tr>
+      <th>Drug</th>
+      <th>Prescriber</th>
+      <th>When Written</th>
+    </tr>
+
+  <% @person.prescriptions_received.each do |rx| %>
+  <tr>
+    <td><%= rx.drug.name %></td>
+    <td><%= rx.prescriber.name %></td>
+    <td><%= rx.when_written %></td>
+  </tr>
+  <% end %>
+  </table>
+</p>
+<% end %>
+
+<% if @person.prescriptions_written.any? %>
+<p><b>Prescriptions Written</b>
+  <table>
+    <tr>
+      <th>Drug</th>
+      <th>Patient</th>
+      <th>When Written</th>
+    </tr>
+
+  <% @person.prescriptions_written.each do |rx| %>
+  <tr>
+    <td><%= rx.drug.name %></td>
+    <td><%= rx.patient.name %></td>
+    <td><%= rx.when_written %></td>
+  </tr>
+  <% end %>
+  </table>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
