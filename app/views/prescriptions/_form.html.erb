@@ -1,4 +1,4 @@
-<%= simple_form_for(@prescription, :html => {:class => 'form-horizontal' }) do |f| %>
+<%= simple_form_for @prescription do |f| %>
   <% if @prescription.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
