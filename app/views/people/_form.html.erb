@@ -12,8 +12,5 @@
   <% end %>
 
   <%= f.input :name %>
-  <div class="control-group controls">
-    <%= f.button :submit, :class => "btn btn-primary" %>
-    <%= link_to 'Cancel', people_path %>
-  </div>
+  <%= f.button :wrapped, :cancel => people_path %>
 <% end %>

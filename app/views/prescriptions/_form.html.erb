@@ -15,8 +15,5 @@
     <%= f.input :prescriber_id, :collection => Person.all.collect {|p| [ p.name, p.id ] } %>
     <%= f.input :drug_id, :collection => Drug.all.collect {|p| [ p.name, p.id ] } %>
     <%= f.input :when_written %>
-    <div class="control-group controls">
-      <%= f.button :submit, :class => "btn btn-primary" %>
-      <%= link_to 'Cancel', prescriptions_path %>
-    </div>
+    <%= f.button :wrapped, :cancel => prescriptions_path %>
 <% end %>
