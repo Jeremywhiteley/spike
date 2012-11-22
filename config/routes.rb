@@ -1,12 +1,8 @@
 PdmpCore::Application.routes.draw do
+
   resources :prescriptions
-
-
   resources :drugs
-
-
   resources :people
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -55,9 +51,8 @@ PdmpCore::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  # land on the people list page (at least for the time being)
+  root :to => 'people#index'
 
   # See how all your routes lay out with "rake routes"
 
