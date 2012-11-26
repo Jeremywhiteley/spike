@@ -18,10 +18,10 @@
 </div>
 
 <% if flash[:notice] %>
-<p class="notice"><%= notice %></p>
+<div class="container alert alert-success"><%= notice %></div>
 <% end %>
 <% if flash[:alert] %>
-<p class="alert"><%= alert %></p>
+<div class="container alert"><%= alert %></div>
 <% end %>
 
 <div class="container">
