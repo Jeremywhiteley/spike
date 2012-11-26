@@ -9,6 +9,18 @@ class PeopleControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:people)
+    assert_equal 2, assigns(:people).size
+  end
+
+  test "should constrain index based on search params" do
+    get :index, "search" => "One"
+    assert_response :success
+    assert_not_nil assigns(:people)
+    assert_equal 1, assigns(:people).size
+    get :index, "search" => "My"
+    assert_response :success
+    assert_not_nil assigns(:people)
+    assert_equal 2, assigns(:people).size
   end
 
   test "should get new" do
