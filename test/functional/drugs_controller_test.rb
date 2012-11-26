@@ -2,6 +2,7 @@ require 'test_helper'
 
 class DrugsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @drug = drugs(:one)
   end
 
