@@ -1,5 +1,7 @@
 PdmpCore::Application.routes.draw do
 
+  devise_for :users
+
   resources :prescriptions
   resources :drugs
   resources :people
