@@ -9,12 +9,10 @@
 <body>
 
 <div class="navbar navbar-inner navbar-static-top">
-  <div class="container">
     <p class="navbar-text pull-right">
       <%= yield(:authn) %>
     </p>
     <a class="brand" href="/">PDMP Core</a>
-  </div>
 </div>
 
 <% if flash[:notice] %>
