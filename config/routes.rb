@@ -5,7 +5,6 @@ PdmpCore::Application.routes.draw do
   devise_for :users
 
   resources :prescriptions
-  resources :drugs
   resources :people
 
   # The priority is based upon order of creation:
