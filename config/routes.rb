@@ -1,4 +1,4 @@
-PdmpCore::Application.routes.draw do
+PdmpSpike::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 

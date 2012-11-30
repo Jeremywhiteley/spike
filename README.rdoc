@@ -1,7 +1,8 @@
-== PDMP-core
+== PDMP Spike
 
-An open source "core" platform for Prescription Drug Monitoring
-Program (PDMP) application research and development.
+A "spike" application for Prescription Drug Monitoring Program (PDMP)
+research and experimentation.
+
 
 == Getting Started
 
@@ -13,8 +14,8 @@ Program (PDMP) application research and development.
 
 4. Go to http://localhost:3000/
 
-5. Add your value-added features. You can find the following resources
-handy:
+5. Add your value-added features. You might find the following
+resources handy:
 
 * The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
 * Ruby on Rails Tutorial Book: http://www.railstutorial.org/
@@ -22,6 +23,7 @@ handy:
 6. If you'd like, please contribute bug fixes and enhancements back to
 this project so others can benefit from them (and you can benefit from
 having a smaller patch kit).
+
 
 == Debugging Rails
 

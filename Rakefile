@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-PdmpCore::Application.load_tasks
+PdmpSpike::Application.load_tasks
