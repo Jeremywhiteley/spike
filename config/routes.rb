@@ -54,6 +54,10 @@ PdmpSpike::Application.routes.draw do
   #     resources :products
   #   end
 
+  match "people/:id" => "people#show", :as => "root_feed", :format => :atom, :via=> :get
+  match "people/:id/root.xml" => "people#root", :as => :root_document, :format => :xml, :via => :get
+  match "people/:id" => "people#options", :as => :root_options, :via => :options
+
   # land on the people list page (at least for the time being)
   root :to => 'people#index'
 

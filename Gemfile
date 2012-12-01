@@ -30,6 +30,10 @@ gem 'simple_form'
 gem 'devise'
 gem 'rails_admin'
 
+group :test do
+  gem 'feedzirra'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

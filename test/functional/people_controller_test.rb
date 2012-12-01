@@ -1,6 +1,7 @@
 require 'test_helper'
+require 'atom_test'
 
-class PeopleControllerTest < ActionController::TestCase
+class PeopleControllerTest < AtomTestCase
   setup do
     sign_in users(:one)
     @person = people(:one)
@@ -59,4 +60,13 @@ class PeopleControllerTest < ActionController::TestCase
 
     assert_redirected_to people_path
   end
+
+  test "get records index Atom feed" do
+    request.env['HTTP_ACCEPT'] = 'application/atom+xml'
+    get :index
+    assert_atom_success
+    rss = atom_results
+    assert_atom_result_count rss, 2
+  end
+
 end
