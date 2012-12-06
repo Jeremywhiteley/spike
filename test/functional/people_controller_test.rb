@@ -69,4 +69,11 @@ class PeopleControllerTest < AtomTestCase
     assert_atom_result_count rss, 2
   end
 
+  test "get person root Atom feed" do
+    request.env['HTTP_ACCEPT'] = 'application/atom+xml'
+    get :show, id: @person
+    assert_atom_success
+    assert_atom_result_count atom_results, 1
+  end
+
 end
