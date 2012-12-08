@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<medication xmlns="urn:hl7-org:greencda:c32"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:hl7-org:greencda:c32 file:/C:/Users/akling/Documents/Retrieved%20from%20Backup/akling/Documents/pdmp/technology%20framework/ccdaschema/medication.xsd">
+    <id>id1</id>
+    <code code="993755" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNorm" displayName="APAP 120 MG / codeine phosphate 12 MG per 5 ML Oral Solution">
+        <originalText>
+        </originalText>
+        <translation code="43063-139-01" codeSystem="	2.16.840.1.113883.6.69" codeSystemName="NDC" displayName="ACETAMINOPHEN and CODEINE"/>
+    </code>
+    <status>completed</status>
+    <freeTextSig>5ML PRN</freeTextSig>
+    <effectiveTime>
+        <start>2006-05-04T18:13:51.0Z</start>
+        <end>2006-05-04T18:13:51.0Z</end>
+    </effectiveTime>
+    <dose amount="12" unit="mL"/>
+    <administrationTiming institutionSpecified="false">
+        <period amount="0" unit="unit7"/>
+    </administrationTiming>
+    <refillStatus>
+        <refillNumber>1</refillNumber>
+    </refillStatus>
+    <productForm code="C42953" codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus" displayName="LIQUID">
+        <originalText>Liquid
+        </originalText>
+    </productForm>
+    <fulfillmentHistory fillStatus="completed">
+        <prescriptionNumber>xyz12345</prescriptionNumber>
+        <dispenseDate>2006-05-04T18:13:51.0Z</dispenseDate>
+        <quantityDispensed amount="4" unit="oz"/>
+        <pharmacy>
+            <id>rx22456</id>
+            <name>Home Town Pharmacy</name>
+            <address>
+                         <street>860 Main Street
+                         </street>
+                         <city> Burke
+                         </city>
+                         <state> VA
+                         </state>
+                         <postalCode> 22015
+                          </postalCode>
+                    </address>
+            <telecom use="WP" value="703-888-1123" preferred="false"/>
+        </pharmacy>
+        <pharmacist>
+            <id>1234567890</id>
+            <name>
+                <title>Dr</title>
+                <givenName>Primary</givenName>
+                <familyName>Provider</familyName>
+            </name>
+        </pharmacist>
+    </fulfillmentHistory>
+    <orderInformation orderNumber="HTP6655zz" fills="2">
+        <quantityOrdered amount="4" unit="oz"/>
+        <orderedDateTime>2006-05-04T18:13:51.0Z</orderedDateTime>
+    </orderInformation>
+</medication>

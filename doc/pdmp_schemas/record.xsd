@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gc32="urn:hl7-org:greencda:c32" targetNamespace="urn:hl7-org:greencda:c32" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="data_types.xsd"/>
+  <!--<xs:include schemaLocation="entry.xsd"/>-->
+  <xs:include schemaLocation="medication.xsd"/>
+    <xs:element name="record">
+    <xs:complexType>
+        <xs:sequence>
+          <xs:element name="patientInformation">
+            <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="gc32:person">
+                <xs:sequence>
+                  <xs:element name="gender" type="gc32:code"/>
+  								<xs:element name="dateOfBirth" type="xs:date"/>
+  								<xs:element name="dateOfDeath" type="xs:date" minOccurs="0"/>
+  								<xs:element name="maritalStatus" type="gc32:code" minOccurs="0"/>
+  								<xs:element name="religiousAffiliation" type="gc32:code" minOccurs="0"/>
+  								<xs:element name="race" type="gc32:code" minOccurs="0" />
+  								<xs:element name="ethnicity" type="gc32:code" minOccurs="0"/>
+  								<xs:element name="languagesSpoken" minOccurs="0">
+  								  <xs:complexType>
+  								    <xs:sequence>
+  								      <xs:element name="language" type="xs:string" maxOccurs="unbounded" />
+  								    </xs:sequence>
+  								  </xs:complexType>
+  								</xs:element>
+                </xs:sequence>
+              </xs:extension>
+            </xs:complexContent>
+            </xs:complexType>
+          </xs:element>
+           <xs:element name="medications">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element ref="gc32:medication" minOccurs="1" maxOccurs="unbounded" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

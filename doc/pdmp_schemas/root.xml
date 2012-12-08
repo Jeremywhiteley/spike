@@ -1,0 +1,36 @@
+<root xmlns="http://projecthdata.org/hdata/schemas/2009/06/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <id>1</id>
+  <version>1</version>
+  <created>2012-12-04T15:50:48</created>
+  <lastModified>2012-12-04T15:50:48</lastModified>
+  <extensions>
+   <!-- <extension extensionId="1">http://projecthdata.org/extension/c32</extension>
+    <extension extensionId="2">http://projecthdata.org/extension/allergy</extension>
+    <extension extensionId="3">http://projecthdata.org/extension/care-goal</extension>
+    <extension extensionId="4">http://projecthdata.org/extension/condition</extension>
+    <extension extensionId="5">http://projecthdata.org/extension/encounter</extension>
+    <extension extensionId="6">http://projecthdata.org/extension/immunization</extension>
+    <extension extensionId="7">http://projecthdata.org/extension/medical-equipment</extension>-->
+    <extension extensionId="1">http://projecthdata.org/extension/record</extension>
+    <extension extensionId="2">http://projecthdata.org/extension/medication</extension>
+    <!--<extension extensionId="9">http://projecthdata.org/extension/procedure</extension>
+    <extension extensionId="10">http://projecthdata.org/extension/result</extension>
+    <extension extensionId="11">http://projecthdata.org/extension/social-history</extension>
+    <extension extensionId="12">http://projecthdata.org/extension/vital-sign</extension>-->
+  </extensions>
+  <sections>
+    <!--<section path="c32" name="C32" extensionId="1"/>
+    <section path="allergies" name="Allergies" extensionId="2"/>
+    <section path="care_goals" name="Care Goals" extensionId="3"/>
+    <section path="conditions" name="Conditions" extensionId="4"/>
+    <section path="encounters" name="Encounters" extensionId="5"/>
+    <section path="immunizations" name="Immunizations" extensionId="6"/>
+    <section path="medical_equipment" name="Medical Equipment" extensionId="7"/>-->
+    <section path="record" name="Patient Demographics" extensionId="1"/>
+    <section path="medications" name="Medications" extensionId="2"/>
+ <!--   <section path="procedures" name="Procedures" extensionId="9"/>
+    <section path="results" name="Lab Results" extensionId="10"/>
+    <section path="social_history" name="Social History" extensionId="11"/>
+    <section path="vital_signs" name="Vital Signs" extensionId="12"/>-->
+  </sections>
+</root>
