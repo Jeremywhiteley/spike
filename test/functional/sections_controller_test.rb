@@ -42,22 +42,26 @@ class SectionsControllerTest < AtomTestCase
     assert_response :success
   end
 
-  test "should get demo_index" do
-    get :demo_index, id: @person
+  test "should get demographics" do
+    get :demographic, id: @person
     assert_response :success
   end
 
-  test "get demographic index Atom feed" do
+  test "get demographic Atom feed" do
     request.env['HTTP_ACCEPT'] = 'application/atom+xml'
-    get :demo_index, id: @person
+    get :demographic, id: @person
     assert_atom_success
     rss = atom_results
     assert_atom_result_count rss, 1
   end
 
-  test "should get demo_show" do
-    get :demo_show, id: @person
+  test "should get demographic XML" do
+    request.env['HTTP_ACCEPT'] = 'application/xml'
+    get :demographic, id: @person
     assert_response :success
+    assert_equal "application/xml", response.content_type
+    demo = Hash.from_xml response.body
+    assert_equal @person.name, demo["record"]["patientInformation"]["name"]["familyName"]
   end
 
 end

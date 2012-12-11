@@ -13,10 +13,12 @@ class SectionsController < ApplicationController
   def med_show
   end
 
-  def demo_index
-  end
-
-  def demo_show
+  def demographic
+    respond_to do |format|
+      format.html
+      format.atom
+      format.xml
+    end
   end
 
   def find_person
