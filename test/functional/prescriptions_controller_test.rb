@@ -30,6 +30,15 @@ class PrescriptionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should show prescription XML" do
+    request.env['HTTP_ACCEPT'] = 'application/xml'
+    get :show, id: @prescription
+    assert_response :success
+    assert_equal "application/xml", response.content_type
+    rx = Hash.from_xml response.body
+    assert_equal @prescription.id.to_s, rx["medication"]["id"]
+  end
+
   test "should get edit" do
     get :edit, id: @prescription
     assert_response :success
