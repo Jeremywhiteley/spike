@@ -34,7 +34,7 @@ class SectionsControllerTest < AtomTestCase
     get :medication, id: @person
     assert_atom_success
     rss = atom_results
-    assert_atom_result_count rss, 1
+    assert_atom_result_count rss, 2
   end
 
   test "should get med_show" do

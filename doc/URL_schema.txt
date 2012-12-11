@@ -27,4 +27,4 @@ Each person has 3 sections:
 /people/{id}/demographic/demographic.xml - person's green demographic record
 /people/{id}/medication/ - person's medication section
 /people/{id}/medication.atom - person's medication section atom feed
-/people/{id}/medication/medication.xml - person's green medication record
+/prescriptions/{id}.xml - green medication record for one prescription

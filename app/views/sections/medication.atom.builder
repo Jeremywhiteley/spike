@@ -1,6 +1,8 @@
 atom_feed do |feed|
-  feed.entry(@person, url: person_medication_path(@person)) do |entry|
-    entry.link rel: "med", type: Mime::XML, href: person_medication_path(@person)
-    entry.title @person.name + " medication"
+  @person.prescriptions_received.each do |rx|
+    feed.entry(rx, url: prescription_path(rx)) do |entry|
+      entry.link rel: "med", type: Mime::XML, href: prescription_path(rx)
+      entry.title "medication #{rx.id}"
+    end
   end
 end
