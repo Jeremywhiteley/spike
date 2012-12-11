@@ -7,10 +7,12 @@ class SectionsController < ApplicationController
   def c32_show
   end
 
-  def med_index
-  end
-
-  def med_show
+  def medication
+    respond_to do |format|
+      format.html
+      format.atom
+      format.xml
+    end
   end
 
   def demographic

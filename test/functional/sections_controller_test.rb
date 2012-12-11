@@ -25,20 +25,20 @@ class SectionsControllerTest < AtomTestCase
   end
 
   test "should get med_index" do
-    get :med_index, id: @person
+    get :medication, id: @person
     assert_response :success
   end
 
   test "get medication index Atom feed" do
     request.env['HTTP_ACCEPT'] = 'application/atom+xml'
-    get :med_index, id: @person
+    get :medication, id: @person
     assert_atom_success
     rss = atom_results
     assert_atom_result_count rss, 1
   end
 
   test "should get med_show" do
-    get :med_show, id: @person
+    get :medication, id: @person
     assert_response :success
   end
 
