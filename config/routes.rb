@@ -58,8 +58,7 @@ PdmpSpike::Application.routes.draw do
   match "people/:id/root.xml" => "people#root", :as => :root_document, :format => :xml, :via => :get
   match "people/:id" => "people#options", :as => :root_options, :via => :options
 
-  match "people/:id/c32" => "sections#c32_index", as: "person_c32_index", via: :get
-  match "people/:id/c32.xml" => "sections#c32_show", as: "person_c32", via: :get
+  match "people/:id/c32" => "sections#c32", as: "person_c32", via: :get
   match "people/:id/demographic" => "sections#demographic", as: "person_demographic", via: :get
   match "people/:id/medication" => "sections#medication", as: "person_medication", via: :get
 

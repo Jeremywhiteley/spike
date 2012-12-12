@@ -1,10 +1,7 @@
 class SectionsController < ApplicationController
   before_filter :find_person
 
-  def c32_index
-  end
-
-  def c32_show
+  def c32
   end
 
   def medication
