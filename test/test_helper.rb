@@ -15,3 +15,11 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 end
+
+class ActionDispatch::IntegrationTest
+  def sign_in
+    post_via_redirect "/users/sign_in", "user[email]" => users(:one).email, "user[password]" => "pw1234"
+    assert_response :success
+    assert_equal '/', path
+  end
+end
