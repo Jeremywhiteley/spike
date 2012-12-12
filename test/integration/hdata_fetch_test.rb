@@ -33,6 +33,23 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
     # process demographic document
     demographic_data = Hash.from_xml response.body
     assert_equal people(:one).name, demographic_data["record"]["patientInformation"]["name"]["familyName"]
+
+    # get c32 feed
+    c32_path = person_feed["feed"]["entry"].select{|h|h["id"]=="/c32"}[0]["link"].select{|h|h["type"]=="application/atom+xml"}[0]["href"]
+    get c32_path, {}, "HTTP_ACCEPT" => 'application/atom+xml'
+    assert_response :success
+
+    # get c32 document
+    c32_feed = Hash.from_xml response.body
+    assert_equal Hash, c32_feed["feed"]["entry"].class
+    c32_doc = c32_feed["feed"]["entry"]["link"].select{|h|h["type"]=="application/xml"}[0]["href"]
+    get c32_doc, {}, "HTTP_ACCEPT" => 'application/xml'
+    assert_response :success
+
+    # process c32 document
+    c32_data = Hash.from_xml response.body
+    assert_equal people(:one).name, c32_data["record"]["patientInformation"]["name"]["familyName"]
+
   end
 
 end
