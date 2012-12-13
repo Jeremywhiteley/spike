@@ -1,6 +1,8 @@
 <p>
   <b>Name:</b>
-  <%= @person.name %>
+  <%= @person.name %><br/>
+  <b>Sex:</b>
+  <%= @person.sex.display_name %>
 </p>
 
 <% if @person.prescriptions_received.any? %>

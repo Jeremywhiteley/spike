@@ -12,5 +12,6 @@
   <% end %>
 
   <%= f.input :name %>
+  <%= f.association :sex, label_method: :display_name %>
   <%= f.button :wrapped, :cancel => people_path %>
 <% end %>

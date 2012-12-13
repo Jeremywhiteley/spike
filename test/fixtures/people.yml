@@ -2,6 +2,8 @@
 
 one:
   name: MyString One
+  sex: M
 
 two:
   name: MyString Two
+  sex: F

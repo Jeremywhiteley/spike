@@ -32,7 +32,7 @@ class PeopleControllerTest < AtomTestCase
 
   test "should create person" do
     assert_difference('Person.count') do
-      post :create, person: { name: @person.name }
+      post :create, person: { name: @person.name, sex_id: sexes(:UNK).id }
     end
 
     assert_redirected_to person_path(assigns(:person))

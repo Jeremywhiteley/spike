@@ -26,6 +26,7 @@ class SectionsControllerTest < AtomTestCase
     assert_equal "application/xml", response.content_type
     demo = Hash.from_xml response.body
     assert_equal @person.name, demo["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal @person.sex.code, demo["record"]["patientInformation"]["gender"]["code"]
   end
 
   test "should get med_index" do
@@ -66,6 +67,7 @@ class SectionsControllerTest < AtomTestCase
     assert_equal "application/xml", response.content_type
     demo = Hash.from_xml response.body
     assert_equal @person.name, demo["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal @person.sex.code, demo["record"]["patientInformation"]["gender"]["code"]
   end
 
 end

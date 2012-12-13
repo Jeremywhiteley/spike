@@ -14,8 +14,8 @@ xml.record :xmlns => "urn:hl7-org:greencda:c32", "xmlns:xsi" => "http://www.w3.o
       xml.postalCode "FIXME"
     end
     xml.telecom "use" => "HP", "preferred" => "true", "value" => "FIXME"
-    xml.gender "codeSystem" => "2.16.840.1.113883.5.1", "codeSystemName" => "AdministrativeGender", "code" => "FIXME", "displayName" => "FIXME" do
-      xml.originalText "FIXME"
+    xml.gender "codeSystem" => @person.sex.code_system, "codeSystemName" => @person.sex.code_system_name, "code" => @person.sex.code, "displayName" => @person.sex.display_name do
+      xml.originalText @person.sex.original_text
     end
     xml.dateOfBirth "FIXME"
   end
