@@ -1,0 +1,20 @@
+F:
+  code: F
+  display_name: Female
+  original_text: Female
+  code_system: 2.16.840.1.113883.5.1
+  code_system_name: AdministrativeGender
+
+M:
+  code: M
+  display_name: Male
+  original_text: Male
+  code_system: 2.16.840.1.113883.5.1
+  code_system_name: AdministrativeGender
+
+UNK:
+  code: UNK
+  display_name: Unknown
+  original_text: Unknown
+  code_system: 2.16.840.1.113883.5.1008
+  code_system_name: NullFlavor

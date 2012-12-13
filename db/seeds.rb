@@ -14,3 +14,10 @@ if User.all.empty?
     puts "admin account bootstrapped: #{u.email}/#{u.password}"
   end
 end
+
+# http://ushik.ahrq.gov/dr.ui.drData_Page?System=ps&KeyRID=88721000
+if Sex.all.empty?
+  Sex.create! code: "F", display_name: "Female", original_text: "Female", code_system: "2.16.840.1.113883.5.1", code_system_name: "AdministrativeGender"
+  Sex.create! code: "M", display_name: "Male", original_text: "Male", code_system: "2.16.840.1.113883.5.1", code_system_name: "AdministrativeGender"
+  Sex.create! code: "UNK", display_name: "Unknown", original_text: "Unknown", code_system: "2.16.840.1.113883.5.1008", code_system_name: "NullFlavor"
+end
