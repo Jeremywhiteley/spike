@@ -19,18 +19,19 @@ GET
  HTTP header "Accept: application/atom+xml"
 /people/{id}/root.xml - person's hData root document
 
-Each person has 3 sections:
+Each person has 3 sections: c32 (composed of both demographics and
+medication in a single document), demographic, and medication.
 
 /people/{id}/c32 - person's c32 section
 /people/{id}/c32 - person's c32 section atom feed
  HTTP header "Accept: application/atom+xml"
-/people/{id}/c32 - person's composed (i.e. all-in-one) green c32 record
+/people/{id}/c32/c32 - person's composed (i.e. all-in-one) green c32 record
  HTTP header "Accept: application/xml"
 
 /people/{id}/demographic - person's demographic section
 /people/{id}/demographic - person's demographic section atom feed
  HTTP header "Accept: application/atom+xml"
-/people/{id}/demographic - person's green demographic record
+/people/{id}/demographic/demographic - person's green demographic record
  HTTP header "Accept: application/xml"
 
 /people/{id}/medication - person's medication section

@@ -1,14 +1,14 @@
 atom_feed do |feed|
-  feed.entry("c32", url: root_feed_path(@person)+"/c32", id: "/c32") do |entry|
-    entry.link(rel: "alternate", type: Mime::Atom, href: root_feed_path(@person)+"/c32")
+  feed.entry("c32", url: person_c32_section_path(@person), id: "/c32") do |entry|
+    entry.link(rel: "alternate", type: Mime::Atom, href: person_c32_section_path(@person))
     entry.title("c32")
   end
-  feed.entry("demographic", url: root_feed_path(@person)+"/demographic", id: "/demographic") do |entry|
-    entry.link(rel: "alternate", type: Mime::Atom, href: root_feed_path(@person)+"/demographic")
+  feed.entry("demographic", url: person_demographic_section_path(@person), id: "/demographic") do |entry|
+    entry.link(rel: "alternate", type: Mime::Atom, href: person_demographic_section_path(@person))
     entry.title("demographic")
   end
-  feed.entry("medication", url: root_feed_path(@person)+"/medication", id: "/medication") do |entry|
-    entry.link(rel: "alternate", type: Mime::Atom, href: root_feed_path(@person)+"/medication")
+  feed.entry("medication", url: person_medication_section_path(@person), id: "/medication") do |entry|
+    entry.link(rel: "alternate", type: Mime::Atom, href: person_medication_section_path(@person))
     entry.title("medication")
   end
 end

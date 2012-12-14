@@ -58,9 +58,11 @@ PdmpSpike::Application.routes.draw do
   match "people/:id/root.xml" => "people#root", :as => :root_document, :format => :xml, :via => :get
   match "people/:id" => "people#options", :as => :root_options, :via => :options
 
-  match "people/:id/c32" => "sections#c32", as: "person_c32", via: :get
-  match "people/:id/demographic" => "sections#demographic", as: "person_demographic", via: :get
-  match "people/:id/medication" => "sections#medication", as: "person_medication", via: :get
+  match "people/:id/c32" => "sections#c32", as: "person_c32_section", via: :get
+  match "people/:id/c32/c32" => "sections#c32", as: "person_c32_doc", via: :get
+  match "people/:id/demographic" => "sections#demographic", as: "person_demographic_section", via: :get
+  match "people/:id/demographic/demographic" => "sections#demographic", as: "person_demographic_doc", via: :get
+  match "people/:id/medication" => "sections#medication", as: "person_medication_section", via: :get
 
   # land on the people list page (at least for the time being)
   root :to => 'people#index'
