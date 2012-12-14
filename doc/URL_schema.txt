@@ -1,5 +1,11 @@
 PDMP "Spike" URL schema, based on hData
 
+Authentication
+==============
+
+HTTP Basic authentication is enabled for API requests.  Web browser
+requests use cookie-based authentication.
+
 Patient Query/Match
 ===================
 
