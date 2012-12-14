@@ -11,7 +11,9 @@
     </div>
   <% end %>
 
-  <%= f.input :name %>
+  <%= f.input :title %>
+  <%= f.input :given_name %>
+  <%= f.input :family_name %>
   <%= f.association :sex, label_method: :display_name %>
   <%= f.button :wrapped, :cancel => people_path %>
 <% end %>

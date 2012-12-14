@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString One
+  title: Mr
+  given_name: TestPatient
+  family_name: One
   sex: M
 
 two:
-  name: MyString Two
+  title: Ms
+  given_name: TestPatient
+  family_name: Two
   sex: F

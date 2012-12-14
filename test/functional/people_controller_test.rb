@@ -19,7 +19,7 @@ class PeopleControllerTest < AtomTestCase
     assert_response :success
     assert_not_nil assigns(:people)
     assert_equal 1, assigns(:people).size
-    get :index, "search" => "My"
+    get :index, "search" => "Test"
     assert_response :success
     assert_not_nil assigns(:people)
     assert_equal 2, assigns(:people).size
@@ -32,7 +32,7 @@ class PeopleControllerTest < AtomTestCase
 
   test "should create person" do
     assert_difference('Person.count') do
-      post :create, person: { name: @person.name, sex_id: sexes(:UNK).id }
+      post :create, person: { family_name: @person.family_name, sex_id: sexes(:UNK).id }
     end
 
     assert_redirected_to person_path(assigns(:person))
@@ -49,7 +49,7 @@ class PeopleControllerTest < AtomTestCase
   end
 
   test "should update person" do
-    put :update, id: @person, person: { name: @person.name }
+    put :update, id: @person, person: { family_name: @person.family_name }
     assert_redirected_to person_path(assigns(:person))
   end
 

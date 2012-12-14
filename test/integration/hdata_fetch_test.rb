@@ -12,7 +12,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
     # follow it to person one's Atom feed
     index_feed = Hash.from_xml response.body
     assert_equal 2, index_feed["feed"]["entry"].size
-    person_path = index_feed["feed"]["entry"].select{|h|h["title"]=="MyString One"}[0]["link"].select{|h|h["type"]=="application/atom+xml"}[0]["href"]
+    person_path = index_feed["feed"]["entry"].select{|h|h["title"]=="Mr TestPatient One"}[0]["link"].select{|h|h["type"]=="application/atom+xml"}[0]["href"]
     get person_path, {}, "HTTP_ACCEPT" => 'application/atom+xml'
     assert_response :success
 
@@ -32,7 +32,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
 
     # process demographic document
     demographic_data = Hash.from_xml response.body
-    assert_equal people(:one).name, demographic_data["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal people(:one).family_name, demographic_data["record"]["patientInformation"]["name"]["familyName"]
 
     # get c32 feed
     c32_path = person_feed["feed"]["entry"].select{|h|h["id"]=="/c32"}[0]["link"].select{|h|h["type"]=="application/atom+xml"}[0]["href"]
@@ -48,7 +48,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
 
     # process c32 document
     c32_data = Hash.from_xml response.body
-    assert_equal people(:one).name, c32_data["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal people(:one).family_name, c32_data["record"]["patientInformation"]["name"]["familyName"]
 
   end
 

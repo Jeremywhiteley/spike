@@ -3,9 +3,9 @@ xml.record :xmlns => "urn:hl7-org:greencda:c32", "xmlns:xsi" => "http://www.w3.o
   xml.patientInformation do
     xml.id @person.id
     xml.name do
-      xml.title "FIXME"
-      xml.givenName "FIXME"
-      xml.familyName @person.name
+      xml.title @person.title
+      xml.givenName @person.given_name
+      xml.familyName @person.family_name
     end
     xml.address do
       xml.street "FIXME"

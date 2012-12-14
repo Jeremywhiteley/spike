@@ -25,7 +25,7 @@ class SectionsControllerTest < AtomTestCase
     assert_response :success
     assert_equal "application/xml", response.content_type
     demo = Hash.from_xml response.body
-    assert_equal @person.name, demo["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal @person.family_name, demo["record"]["patientInformation"]["name"]["familyName"]
     assert_equal @person.sex.code, demo["record"]["patientInformation"]["gender"]["code"]
   end
 
@@ -66,7 +66,7 @@ class SectionsControllerTest < AtomTestCase
     assert_response :success
     assert_equal "application/xml", response.content_type
     demo = Hash.from_xml response.body
-    assert_equal @person.name, demo["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal @person.family_name, demo["record"]["patientInformation"]["name"]["familyName"]
     assert_equal @person.sex.code, demo["record"]["patientInformation"]["gender"]["code"]
   end
 
