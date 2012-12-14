@@ -17,6 +17,6 @@ xml.record :xmlns => "urn:hl7-org:greencda:c32", "xmlns:xsi" => "http://www.w3.o
     xml.gender "codeSystem" => @person.sex.code_system, "codeSystemName" => @person.sex.code_system_name, "code" => @person.sex.code, "displayName" => @person.sex.display_name do
       xml.originalText @person.sex.original_text
     end
-    xml.dateOfBirth "FIXME"
+    xml.dateOfBirth @person.birthdate
   end
 end

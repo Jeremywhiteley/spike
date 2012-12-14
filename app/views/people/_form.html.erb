@@ -15,5 +15,6 @@
   <%= f.input :given_name %>
   <%= f.input :family_name %>
   <%= f.association :sex, label_method: :display_name %>
+  <%= f.input :birthdate, :include_blank => true, :start_year => Date.today.year - 90, :end_year => Date.today.year - 12 %>
   <%= f.button :wrapped, :cancel => people_path %>
 <% end %>

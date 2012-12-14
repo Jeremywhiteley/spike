@@ -5,6 +5,7 @@ one:
   given_name: TestPatient
   family_name: One
   sex: M
+  birthdate: 1922-12-12
 
 two:
   title: Ms
