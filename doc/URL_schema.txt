@@ -6,7 +6,8 @@ Patient Query/Match
 GET
 ---
 /people - HTML index of people
-/people.atom - Atom feed of people
+/people - Atom feed of people
+ HTTP header "Accept: application/atom+xml"
 
 Patient Data Retrieval
 ======================
@@ -14,17 +15,26 @@ Patient Data Retrieval
 GET
 ---
 /people/{id} - person's HTML index page
-/people/{id}.atom - person's Atom index
+/people/{id} - person's atom index
+ HTTP header "Accept: application/atom+xml"
 /people/{id}/root.xml - person's hData root document
 
 Each person has 3 sections:
 
-/people/{id}/c32/ - person's c32 section
-/people/{id}/c32.atom - person's c32 section atom feed
-/people/{id}/c32/c32.xml - person's composed (i.e. all-in-one) green c32 record
-/people/{id}/demographic/ - person's demographic section
-/people/{id}/demographic.atom - person's demographic section atom feed
-/people/{id}/demographic/demographic.xml - person's green demographic record
-/people/{id}/medication/ - person's medication section
-/people/{id}/medication.atom - person's medication section atom feed
-/prescriptions/{id}.xml - green medication record for one prescription
+/people/{id}/c32 - person's c32 section
+/people/{id}/c32 - person's c32 section atom feed
+ HTTP header "Accept: application/atom+xml"
+/people/{id}/c32 - person's composed (i.e. all-in-one) green c32 record
+ HTTP header "Accept: application/xml"
+
+/people/{id}/demographic - person's demographic section
+/people/{id}/demographic - person's demographic section atom feed
+ HTTP header "Accept: application/atom+xml"
+/people/{id}/demographic - person's green demographic record
+ HTTP header "Accept: application/xml"
+
+/people/{id}/medication - person's medication section
+/people/{id}/medication - person's medication section atom feed
+ HTTP header "Accept: application/atom+xml"
+/prescriptions/{id} - green medication record for one prescription
+ HTTP header "Accept: application/xml"
