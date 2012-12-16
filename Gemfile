@@ -29,6 +29,7 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'rails_admin'
+gem 'carmen-rails'
 
 group :test do
   gem 'feedzirra'
