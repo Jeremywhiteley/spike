@@ -27,6 +27,7 @@ class PeopleController < ApplicationController
   # GET /people/new.json
   def new
     @person = Person.new
+    @person.address = Address.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +38,12 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
+
+    # if the person doesn't have an address then give the user a
+    # chance to add one
+    if !@person.address
+      @person.address = Address.new
+    end
   end
 
   # POST /people
@@ -59,6 +66,14 @@ class PeopleController < ApplicationController
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
+
+    # if all the address form parameters are empty then "disconnect"
+    # the person from the address
+    addr = params[:person][:address_attributes]
+    if (addr && ""==addr[:street] && ""==addr[:city] && ""==addr[:state] && ""==addr[:postal_code])
+      @person.address = nil
+      params[:person].delete :address_attributes
+    end
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
