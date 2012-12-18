@@ -32,6 +32,7 @@ gem 'rails_admin'
 gem 'carmen-rails'
 
 group :test do
+  gem 'nokogiri'
   gem 'feedzirra'
 end
 
