@@ -19,7 +19,7 @@
   <%= f.simple_fields_for :address, @person.address do |a| %>
   <%= a.input :street %>
   <%= a.input :city %>
-  <%= a.input :state %>
+  <%= a.input :state, :collection => state_codes %>
   <%= a.input :postal_code %>
   <% end %>
   <%= f.button :wrapped, :cancel => people_path %>
