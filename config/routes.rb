@@ -4,6 +4,7 @@ PdmpSpike::Application.routes.draw do
 
   devise_for :users
 
+  match "people/opensearch" => "people#opensearch", as: "opensearch", :format => :opensearchdescription, :via => :get
   match "people/:id/root.xml" => "people#root", :as => :root_document, :format => :xml, :via => :get
   match "people/:id" => "people#options", :as => :root_options, :via => :options
 

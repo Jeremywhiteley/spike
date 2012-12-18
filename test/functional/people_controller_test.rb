@@ -108,4 +108,16 @@ class PeopleControllerTest < AtomTestCase
     assert_atom_result_count atom_results, 3
   end
 
+  test "should get opensearch description document" do
+    request.env["HTTP_ACCEPT"] = "application/opensearchdescription+xml"
+    get :opensearch
+    assert_response :success
+    assert_match "application/opensearchdescription+xml", response.headers['Content-Type']
+
+    # I'd like to validate the response against an OpenSearch XML
+    # schema, but there doesn't seem to be such a beast
+    desc_doc = Hash.from_xml response.body
+    assert_equal "Patient Search", desc_doc["OpenSearchDescription"]["ShortName"]
+  end
+
 end
