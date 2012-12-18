@@ -9,6 +9,7 @@
   <tr>
     <th>Name</th>
     <th>Address</th>
+    <th>Birthdate</th>
     <th></th>
     <th></th>
   </tr>
@@ -17,6 +18,7 @@
   <tr>
     <td><%= link_to person.name, person %></td>
     <td><%= person.address %>
+    <td><%= person.birthdate %>
     <td><%= link_to 'Edit', edit_person_path(person) %></td>
     <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
