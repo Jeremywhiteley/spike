@@ -1,9 +1,11 @@
-<h1>People</h1>
-
+<div id="people_search" class="span4 pull-right">
 <%= simple_form_for people_path, :method => 'get' do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", :name => nil, :class => "btn" %>
 <% end %>
+</div>
+
+<h1>People</h1>
 
 <table class="table table-condensed">
   <tr>
