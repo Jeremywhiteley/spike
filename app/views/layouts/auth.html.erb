@@ -1,7 +1,9 @@
 <% content_for :authn do %>
 <%= current_user.email %> 
 | 
-<%= link_to 'Sign out', destroy_user_session_path, :method => :delete  %>
+<%= link_to destroy_user_session_path, :method => :delete do %>
+<i class="icon-signout"></i> Sign out
+<% end %>
 <% end %>
 
 <%= render :file => 'layouts/application' %>

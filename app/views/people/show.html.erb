@@ -49,5 +49,12 @@
 </p>
 <% end %>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<p>
+<%= link_to edit_person_path(@person) do %>
+<i class="icon-edit"></i> Edit
+<% end %>
+|
+<%= link_to people_path do %>
+<i class="icon-chevron-up"></i> Back to People
+<% end %>
+</p>
