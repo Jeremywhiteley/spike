@@ -173,6 +173,7 @@ DEPENDENCIES
   devise
   execjs
   feedzirra
+  font-awesome-sass-rails
   jquery-rails
   nokogiri
   rails (= 3.2.9)
