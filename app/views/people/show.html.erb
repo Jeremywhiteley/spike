@@ -54,6 +54,11 @@
 <i class="icon-edit"></i> Edit
 <% end %>
 |
+<%= link_to person_path(@person), method: :delete, data: { confirm: 'Are you sure?' } do %>
+<i class="icon-remove"></i> Delete
+<% end %>
+</p>
+<p>
 <%= link_to people_path do %>
 <i class="icon-chevron-up"></i> Back to People
 <% end %>
