@@ -1,0 +1,97 @@
+SRPP - Simple Restful PDMP Profile
+==================================
+
+Background
+----------
+
+Two United States federal government agencies (SAMHSA (the Substance
+Abuse and Mental Health Services Administration) and ONC (the Office
+of the National Coordinator for Health IT)) implemented a set of pilot
+tests in 2012.  These pilots were intended to demonstrate the value of
+providing PDMP (Prescription Drug Monitoring Program) data to health
+care providers via the systems that they used on a day-to-day basis
+such as EMR's and HIE's.  The results were clear: healthcare providers
+used PDMP data more effectively when they didn't have to "alt-tab" to
+a web browser and login to a PDMP portal.
+
+One of the key lessons learned from the pilot tests was that
+integrating to PDMP systems was very difficult.  In most states, the
+PDMP was a "walled garden" with no API for system integration, only an
+HTML portal for end-user access.  We were able in some cases to work
+around this problem by connecting to an interstate PDMP data sharing
+system (such as PMPi) but had to abandon some pilot tests because we
+couldn't integrate with the local PDMP.
+
+Based on this experience, ONC and SMAHSA developed a testbed to
+demonstrate an integration between a PDMP and an EMR.  This document
+describes the protocol used for that demonstration.  It's based on
+existing healthcare and internet standard protocols.
+
+Introduction
+------------
+
+The Simple Restful PDMP Profile describes an interface for health IT
+systems (e.g., EMR, EHR, HIE) to query PDMP systems for patient
+controlled substance history reports.  It implements two use cases:
+patient query (i.e., search), and report retrieval.  Patient query is
+implemented using the [OpenSearch
+Protocol](http://www.opensearch.org/), and report retrieval is
+implemented using the [hData REST Binding for
+RLUS](http://www.projecthdata.org/).  Both protocols are very
+flexible, so this document describes the design constraints that
+should be followed to ensure interoperability.
+
+Patient Query
+-------------
+
+SRPP patient queries use the [OpenSearch
+Protocol](http://www.opensearch.org/). The OpenSearch web site
+describes OpenSearch as
+
+> a collection of simple formats for the sharing of search results.
+
+OpenSearch consists of a "description document" that describes how to
+query a search service, and a set of "response elements" that describe
+how to format search results.
+
+SRPP server implementations must provide an [Autodiscovery
+link](http://www.opensearch.org/Specifications/OpenSearch/1.1#Autodiscovery)
+to their OpenSearch description document, in either HTML or RSS form.
+HTML is preferred, in the server's home page (i.e., the page with a
+path of "/").  Clients should implement autodiscovery, but should also
+allow the server's description document URI to be entered manually.
+
+### Description Document
+
+### Search Terms
+
+### Atom Results
+
+Document Retrieval
+------------------
+
+Security
+--------
+
+Example
+-------
+
+### Description Document
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:pdmp="http://pdmp.mitre.org/opensearchextensions/1.0/">
+      <ShortName>PDMP Patient Search</ShortName>
+      <LongName>PDMP Patient Search</LongName>
+      <Description>Search the PDMP for patients</Description>
+      <Tags>pdmp patient</Tags>
+      <Url type="application/opensearchdescription+xml" method="get" rel="self" template="http://localhost:3000/people/opensearch"/>
+      <Url type="application/atom+xml" method="get" rel="results" template="http://localhost:3000/people/?utf8=✓&amp;search={searchTerms}"/>
+      <Url type="text/html" method="get" template="http://localhost:3000/people/?utf8=✓&amp;search={searchTerms}"/>
+      <Query role="example" pdmp:ln="smith" pdmp:fn="john" pdmp:location="boston" pdmp:gen="male" title="Sample search"/>
+      <Developer>MITRE Corporation</Developer>
+      <SyndicationRight>limited</SyndicationRight>
+      <AdultContent>false</AdultContent>
+      <Language>*</Language>
+      <OutputEncoding>UTF-8</OutputEncoding>
+      <InputEncoding>UTF-8</InputEncoding>
+    </OpenSearchDescription>
