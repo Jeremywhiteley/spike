@@ -9,11 +9,7 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :address, :reject_if => :all_blank
 
   def name
-    name = ""
-    name += title + " " if title
-    name += given_name + " " if given_name
-    name += family_name
-    name
+    [title, given_name, family_name].select{|f| f.present?}.join " "
   end
 
   def self.search(search)
