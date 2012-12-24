@@ -11,6 +11,7 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal 1, Person.search("One").length
     assert_equal 1, Person.search("Two").length
     assert_equal 2, Person.search("TestPatient").length
+    assert_equal 1, Person.search("Main").length
   end
 
   test "address associations" do

@@ -18,7 +18,7 @@ class Person < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['family_name LIKE ? or given_name LIKE ?', "%#{search}%", "%#{search}%"])
+      where('people.family_name LIKE :q or people.given_name LIKE :q or addresses.street LIKE :q or addresses.city LIKE :q or addresses.state LIKE :q OR addresses.postal_code LIKE :q', :q => "%#{search}%").includes(:address)
     else
       find(:all)
     end
