@@ -61,9 +61,102 @@ HTML is preferred, in the server's home page (i.e., the page with a
 path of "/").  Clients should implement autodiscovery, but should also
 allow the server's description document URI to be entered manually.
 
+SRPP searches should be case-insensitive.
+
+SRPP search servers should prefer to match search terms precisely and
+should return only precise matches if there are any.  If there are no
+precise matches then they can choose to return results based on
+"fuzzy" searches.  For example, if an SRPP server contained patients
+whose names were "John Smith" and "Johnson Ironsmith" and a client
+searched for "family=smith&given=john" the server should return only
+"John Smith".  If a server contained patients whose names were
+"Johnathan Smithfield" and "Johnson Ironsmith" but no patient whose
+name was "John Smith" and a client searched for
+"family=smith&given=john" the server could choose to return both
+patients, or none at all.
+
 ### Description Document
 
+The OpenSearch description document describes how a client should
+query an OpenSearch server.  The format is [documented on the
+OpenSearch
+website](http://www.opensearch.org/Specifications/OpenSearch/1.1#OpenSearch_description_document)
+but is extended by SRPP to accomodate specific search terms.
+
+An example SRPP-compliant OpenSearch description document is provided
+below in the "Examples" section.
+
 ### Search Terms
+
+SRPP extends OpenSearch to allow for precisely targetted searches.
+SRPP search URL's support the following search terms:
+
+#### multi
+
+The "multi" search term allows for broad unfocussed searches.  Search
+keywords associated with "multi" will match given name, family name,
+and all address fields.
+
+Example:
+
+    multi=main
+
+would match a person whose name or address contained "main".
+
+#### family
+
+The "family" search term matches family (i.e., last) names.
+
+Example:
+
+    family=smith
+
+would match a person whose family name was "Smith".
+
+#### given
+
+The "given" search term matches given (i.e., first) names.
+
+Example:
+
+    given=Fred
+
+would match a person whose given name was "Fred".
+
+#### dob
+
+The "dob" search term matches a person's date of birth.  The search
+data should be formatted in XML Schema date format, and should contain
+only a date part and no timezone.
+
+Example:
+
+    dob=1939-02-29
+
+would match a person born on Febrary 29, 1929.
+
+#### loc
+
+The "loc" search term matches any field in the person's address
+record.
+
+Example:
+
+    loc=Sector 7G
+
+would match a person whose address contained "Sector 7G".
+
+#### gender
+
+The "gender" search term matches the person's gender.  Allowable
+values are "male" and "female".
+
+Example:
+
+    gender=male
+
+would match all persons whose gender was known to be male.  It would
+not match people whose gender was unknown.
 
 ### Atom Results
 
@@ -73,10 +166,10 @@ Document Retrieval
 Security
 --------
 
-Example
--------
+Examples
+--------
 
-### Description Document
+### Example Description Document
 
     <?xml version="1.0" encoding="UTF-8"?>
     <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:pdmp="http://pdmp.mitre.org/opensearchextensions/1.0/">
@@ -84,10 +177,18 @@ Example
       <LongName>PDMP Patient Search</LongName>
       <Description>Search the PDMP for patients</Description>
       <Tags>pdmp patient</Tags>
-      <Url type="application/opensearchdescription+xml" method="get" rel="self" template="http://localhost:3000/people/opensearch"/>
-      <Url type="application/atom+xml" method="get" rel="results" template="http://localhost:3000/people/?utf8=✓&amp;search={searchTerms}"/>
-      <Url type="text/html" method="get" template="http://localhost:3000/people/?utf8=✓&amp;search={searchTerms}"/>
-      <Query role="example" pdmp:ln="smith" pdmp:fn="john" pdmp:location="boston" pdmp:gen="male" title="Sample search"/>
+      <Url type="application/opensearchdescription+xml" method="get" rel="self" template="http://pdmp.example.org/people/opensearch"/>
+      <Url type="application/atom+xml"
+        template="http://pdmp.example.org/search?multi={searchTerms?}&amp;family={pdmp:familyname?}&amp;given={pdmp:givenname?}&amp;dob={pdmp:birthdate?}&amp;loc={pdmp:location?}&amp;gen={pdmp:gender?}"
+        rel="results"
+	indexOffset="1"
+        pageOffset="1"/>
+      <Query role="example"
+	  pdmp:ln="smith"
+	  pdmp:fn="john"
+	  pdmp:location="boston"
+          pdmp:gen="male"
+	  title="Sample search"/>
       <Developer>MITRE Corporation</Developer>
       <SyndicationRight>limited</SyndicationRight>
       <AdultContent>false</AdultContent>
@@ -95,3 +196,10 @@ Example
       <OutputEncoding>UTF-8</OutputEncoding>
       <InputEncoding>UTF-8</InputEncoding>
     </OpenSearchDescription>
+
+References
+----------
+
+Atom Syndication Format (RFC 4287): [http://tools.ietf.org/html/rfc4287](http://tools.ietf.org/html/rfc4287)<br/>
+OpenSearch 1.1: [http://www.opensearch.org/Specifications/OpenSearch/1.1](http://www.opensearch.org/Specifications/OpenSearch/1.1)</br>
+XML Schema Date datatype: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)
