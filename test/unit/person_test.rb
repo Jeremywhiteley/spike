@@ -14,6 +14,12 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal 1, Person.search("Main").length
   end
 
+  test "advanced search" do
+    assert_equal 1, Person.advanced_search(family: people(:one).family_name).length
+    assert_equal 2, Person.advanced_search(given: people(:one).given_name).length
+    assert_equal 1, Person.advanced_search(given: people(:one).given_name, family: people(:one).family_name).length
+  end
+
   test "address associations" do
     assert_equal addresses(:one).street, people(:one).address.street
   end

@@ -7,21 +7,7 @@
 
 <h1>People</h1>
 
-<table class="table table-condensed">
-  <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Birthdate</th>
-  </tr>
-
-<% @people.each do |person| %>
-  <tr>
-    <td><%= link_to person.name, person %></td>
-    <td><%= person.address %>
-    <td><%= person.birthdate %>
-  </tr>
-<% end %>
-</table>
+<%= render "results" %>
 
 <%= link_to new_person_path do %>
 <i class="icon-plus"></i> New Person

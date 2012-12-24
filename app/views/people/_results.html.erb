@@ -1,0 +1,15 @@
+<table class="table table-condensed">
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Birthdate</th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr>
+    <td><%= link_to person.name, person %></td>
+    <td><%= person.address %>
+    <td><%= person.birthdate %>
+  </tr>
+<% end %>
+</table>

@@ -20,4 +20,20 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def self.advanced_search(params)
+    query_terms = []
+    query_params = {}
+
+    if params[:given].present?
+      query_terms << "people.given_name = :given"
+      query_params[:given] = params[:given]
+    end
+    if params[:family].present?
+      query_terms << "people.family_name = :family"
+      query_params[:family] = params[:family]
+    end
+
+    where(query_terms.join(" AND "), query_params)
+  end
+
 end
