@@ -239,4 +239,35 @@ RailsAdmin.config do |config|
   #     # using `field` instead of `configure` will exclude all other fields and force the ordering
   # end
 
+  config.model "Sex" do
+    object_label_method do
+      :display_name
+    end
+  end
+
+  person_fields = Proc.new do
+    field :id
+    field :title
+    field :given_name
+    field :family_name
+    field :sex
+    field :birthdate
+    field :address
+    field :prescriptions_received
+    field :prescriptions_written
+  end
+
+  ro_field = Proc.new do
+    read_only true
+  end
+
+  config.model "Person" do
+    list &person_fields
+    show &person_fields
+    edit &person_fields
+    export &person_fields
+    field :prescriptions_written, &ro_field
+    field :prescriptions_received, &ro_field
+  end
+
 end
