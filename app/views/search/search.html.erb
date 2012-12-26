@@ -1,22 +1,13 @@
-<h1>Advanced Search</h1>
+<h1>Search</h1>
 
-<%= form_tag search_path, :method => 'get', :class => "form-horizontal" do %>
-  <div class="control-group string optional">
-    <label class="string optional control-label" for="given">Given Name</label>
-    <div class="controls">
-      <%= text_field_tag :given, params[:given] %>
-    </div>
-  </div>
-  <div class="control-group string optional">
-    <label class="string optional control-label" for="family">Family Name</label>
-    <div class="controls">
-      <%= text_field_tag :family, params[:family] %>
-    </div>
-  </div>
-  <div class="form-actions">
-  <%= submit_tag "Search", :name => nil, :class => "btn btn-primary" %>
-  </div>
+<%= simple_form_for @search, :method => 'get' do |s| %>
+  <%= s.input :given, label: "Given (First) Name" %>
+  <%= s.input :family, label: "Family (Last) Name" %>
 
-  <%= render "people/results" %>
+  <%= s.button :wrapped, "Search", :cancel => searches_path %>
+<% end %>
 
+<% if @people.present? %>
+<h2>Results</h2>
+<%= render "people/results" %>
 <% end %>

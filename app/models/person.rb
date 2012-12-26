@@ -21,6 +21,8 @@ class Person < ActiveRecord::Base
   end
 
   def self.advanced_search(params)
+    return [] unless params
+
     query_terms = []
     query_params = {}
 

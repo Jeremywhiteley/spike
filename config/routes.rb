@@ -17,7 +17,7 @@ PdmpSpike::Application.routes.draw do
   resources :prescriptions
 
   get "search/description" => "search#description", as: "description", :format => :opensearchdescription
-  get "search" => "search#search", as: "search"
+  get "search" => "search#search", as: "searches"
 
   # land on the people list page (at least for the time being)
   root :to => 'people#index'
