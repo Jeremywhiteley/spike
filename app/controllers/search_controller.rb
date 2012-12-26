@@ -4,4 +4,7 @@ class SearchController < ApplicationController
     @people = Person.advanced_search(params)
   end
 
+  def description
+  end
+
 end

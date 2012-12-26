@@ -82,7 +82,4 @@ class PeopleController < ApplicationController
     end
   end
 
-  def opensearch
-  end
-
 end
