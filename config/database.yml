@@ -18,6 +18,15 @@ test:
   pool: 5
   timeout: 5000
 
+# a database to let us test for postgres/sqlite incompatibilities
+# without having to deploy
+pg_test:
+  host: localhost
+  adapter: postgresql
+  database: spike_test
+  username: spike
+  password: let_spike_in
+
 production:
   adapter: sqlite3
   database: db/production.sqlite3
