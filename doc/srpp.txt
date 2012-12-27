@@ -179,7 +179,7 @@ Examples
       <Tags>pdmp patient</Tags>
       <Url type="application/opensearchdescription+xml" method="get" rel="self" template="http://pdmp.example.org/people/opensearch"/>
       <Url type="application/atom+xml"
-        template="http://pdmp.example.org/search?multi={searchTerms?}&amp;family={pdmp:familyname?}&amp;given={pdmp:givenname?}&amp;dob={pdmp:birthdate?}&amp;loc={pdmp:location?}&amp;gen={pdmp:gender?}"
+        template="http://pdmp.example.org/search?multi={searchTerms?}&amp;family={pdmp:familyname?}&amp;given={pdmp:givenname?}&amp;dob={pdmp:birthdate?}&amp;loc={pdmp:location?}&amp;gender={pdmp:gender?}"
         rel="results"
 	indexOffset="1"
         pageOffset="1"/>

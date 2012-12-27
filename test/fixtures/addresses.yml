@@ -7,7 +7,7 @@ one:
   postal_code: 12345-6789
 
 two:
-  street: MyString
-  city: MyString
-  state: MyString
-  postal_code: MyString
+  street: 27 Test Street
+  city: Testtown
+  state: AA
+  postal_code: 98765-4321

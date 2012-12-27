@@ -7,7 +7,7 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "search" do
-    assert_equal 2, Person.search(nil).length
+    assert_equal 3, Person.search(nil).length
     assert_equal 1, Person.search("One").length
     assert_equal 1, Person.search("Two").length
     assert_equal 2, Person.search("TestPatient").length
@@ -15,11 +15,13 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   test "advanced search" do
+    assert_equal [], Person.advanced_search(nil)
     assert_equal 1, Person.advanced_search(Search.new family: people(:one).family_name).length
     assert_equal 2, Person.advanced_search(Search.new given: people(:one).given_name).length
     assert_equal 1, Person.advanced_search(Search.new given: people(:one).given_name, family: people(:one).family_name).length
     assert_equal 1, Person.advanced_search(Search.new gender: "female").length
     assert_equal 1, Person.advanced_search(Search.new given: people(:one).given_name, gender: "male").length
+    assert_equal 1, Person.advanced_search(Search.new loc: "AA").length
   end
 
   test "address associations" do

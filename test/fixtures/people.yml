@@ -13,3 +13,9 @@ two:
   given_name: TestPatient
   family_name: Two
   sex: F
+
+three:
+  given_name: Given
+  family_name: Three
+  sex: UNK
+  address: two

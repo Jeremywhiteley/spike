@@ -40,8 +40,12 @@ class Person < ActiveRecord::Base
       query_terms << "people.sex_id = :sex"
       query_params[:sex] = sex.id
     end
+    if params.loc.present?
+      query_terms << "(addresses.street LIKE :loc or addresses.city LIKE :loc or addresses.state LIKE :loc OR addresses.postal_code LIKE :loc)"
+      query_params[:loc] = "%#{params.loc}%"
+    end
 
-    query_params.present? and where(query_terms.join(" AND "), query_params)
+    query_params.present? and where(query_terms.join(" AND "), query_params).includes(:address)
   end
 
 end

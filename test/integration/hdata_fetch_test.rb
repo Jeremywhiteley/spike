@@ -11,7 +11,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
 
     # follow it to person one's Atom feed
     index_feed = Hash.from_xml response.body
-    assert_equal 2, index_feed["feed"]["entry"].size
+    assert_equal 3, index_feed["feed"]["entry"].size
     person_path = index_feed["feed"]["entry"].select{|h|h["title"]=="Mr TestPatient One"}[0]["link"].select{|h|h["type"]=="application/atom+xml"}[0]["href"]
     get person_path, {}, "HTTP_ACCEPT" => 'application/atom+xml'
     assert_response :success

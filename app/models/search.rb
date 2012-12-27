@@ -2,7 +2,7 @@ class Search
   include ActiveModel::Validations
   include ActiveModel::Conversion
 
-  attr_accessor :given, :family, :gender
+  attr_accessor :given, :family, :gender, :loc
 
   def initialize(attributes = {})
     attributes.each { |name, value| send("#{name}=", value) rescue NoMethodError } if attributes
