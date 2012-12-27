@@ -34,6 +34,10 @@ class Person < ActiveRecord::Base
       query_terms << "people.family_name = :family"
       query_params[:family] = params[:family]
     end
+    if params[:sex].present?
+      query_terms << "people.sex_id = :sex"
+      query_params[:sex] = params[:sex]
+    end
 
     where(query_terms.join(" AND "), query_params)
   end

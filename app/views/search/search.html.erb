@@ -3,6 +3,9 @@
 <%= simple_form_for @search, :method => 'get' do |s| %>
   <%= s.input :given, label: "Given (First) Name" %>
   <%= s.input :family, label: "Family (Last) Name" %>
+  <%= s.input :sex, label: "Gender" do %>
+  <%= s.select :sex, Sex.all.map { |s| [s.display_name, s.id] }, include_blank: true %>
+  <% end %>
 
   <%= s.button :wrapped, "Search", :cancel => searches_path %>
 <% end %>
