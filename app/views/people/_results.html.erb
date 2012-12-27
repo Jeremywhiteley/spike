@@ -2,6 +2,7 @@
   <tr>
     <th>Name</th>
     <th>Address</th>
+    <th>Gender</th>
     <th>Birthdate</th>
   </tr>
 
@@ -9,6 +10,7 @@
   <tr>
     <td><%= link_to person.name, person %></td>
     <td><%= person.address %>
+    <td><%= person.sex.try(:display_name) %>
     <td><%= person.birthdate %>
   </tr>
 <% end %>
