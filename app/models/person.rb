@@ -20,26 +20,28 @@ class Person < ActiveRecord::Base
     end
   end
 
+  # expects a populated Search model
   def self.advanced_search(params)
     return [] unless params
 
     query_terms = []
     query_params = {}
 
-    if params[:given].present?
+    if params.given.present?
       query_terms << "people.given_name = :given"
-      query_params[:given] = params[:given]
+      query_params[:given] = params.given
     end
-    if params[:family].present?
+    if params.family.present?
       query_terms << "people.family_name = :family"
-      query_params[:family] = params[:family]
+      query_params[:family] = params.family
     end
-    if params[:sex].present?
+    if params.gender.present?
+      sex = Sex.find_by_display_name(params.gender.capitalize)
       query_terms << "people.sex_id = :sex"
-      query_params[:sex] = params[:sex]
+      query_params[:sex] = sex.id
     end
 
-    where(query_terms.join(" AND "), query_params)
+    query_params.present? and where(query_terms.join(" AND "), query_params)
   end
 
 end

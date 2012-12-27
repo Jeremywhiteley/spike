@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
 
   def search
-    @search = Search.new(params[:search])
-    @people = Person.advanced_search(params[:search])
+    @search = Search.new(params)
+    @people = Person.advanced_search(@search)
   end
 
   def description

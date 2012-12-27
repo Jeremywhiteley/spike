@@ -1,11 +1,9 @@
 <h1>Search</h1>
 
 <%= simple_form_for @search, :method => 'get' do |s| %>
-  <%= s.input :given, label: "Given (First) Name" %>
-  <%= s.input :family, label: "Family (Last) Name" %>
-  <%= s.input :sex, label: "Gender" do %>
-  <%= s.select :sex, Sex.all.map { |s| [s.display_name, s.id] }, include_blank: true %>
-  <% end %>
+  <%= s.input :given, label: "Given (First) Name", input_html: { name: "given" } %>
+  <%= s.input :family, label: "Family (Last) Name", input_html: { name: "family" } %>
+  <%= s.input :gender, label: "Gender", collection: Sex.all.map { |s| [s.display_name, s.display_name.downcase] }, include_blank: true, input_html: { name: "gender" } %>
 
   <%= s.button :wrapped, "Search", :cancel => searches_path %>
 <% end %>
