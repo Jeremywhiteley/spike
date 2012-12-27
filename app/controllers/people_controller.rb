@@ -6,7 +6,7 @@ class PeopleController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.atom
+      format.atom { render template: "search/search" }
     end
   end
 
