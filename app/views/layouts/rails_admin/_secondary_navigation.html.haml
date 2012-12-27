@@ -3,4 +3,6 @@
     - if user_link = edit_user_link
       = current_user.email + " | "
     - if defined?(Devise) && (devise_scope = request.env["warden"].config[:default_scope] rescue false) && (logout_path = main_app.send("destroy_#{devise_scope}_session_path") rescue false)
-      = link_to 'Sign out', logout_path, :method => Devise.sign_out_via
+      = link_to logout_path, :method => Devise.sign_out_via do
+        %i.icon-signout
+        Sign out
