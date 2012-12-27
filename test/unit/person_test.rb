@@ -22,6 +22,7 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal 1, Person.advanced_search(Search.new gender: "female").length
     assert_equal 1, Person.advanced_search(Search.new given: people(:one).given_name, gender: "male").length
     assert_equal 1, Person.advanced_search(Search.new loc: "AA").length
+    assert_equal 1, Person.advanced_search(Search.new dob: people(:one).birthdate).length
   end
 
   test "address associations" do

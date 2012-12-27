@@ -1,3 +1,5 @@
+require 'date'
+
 class Person < ActiveRecord::Base
   validates :family_name, :presence => true
   validates :sex_id, :presence => true
@@ -43,6 +45,12 @@ class Person < ActiveRecord::Base
     if params.loc.present?
       query_terms << "(addresses.street LIKE :loc or addresses.city LIKE :loc or addresses.state LIKE :loc OR addresses.postal_code LIKE :loc)"
       query_params[:loc] = "%#{params.loc}%"
+    end
+    if params.dob.present?
+      # if the parameter is a String it needs to be parsed to a Date
+      dob = params.dob.class == String && Date.parse(params.dob) || params.dob
+      query_terms << "people.birthdate = :dob"
+      query_params[:dob] = dob
     end
 
     query_params.present? and where(query_terms.join(" AND "), query_params).includes(:address)

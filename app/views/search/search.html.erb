@@ -5,6 +5,8 @@
   <%= s.input :family, label: "Family (Last) Name", input_html: { name: "family" } %>
   <%= s.input :gender, label: "Gender", collection: Sex.all.map { |s| [s.display_name, s.display_name.downcase] }, include_blank: true, input_html: { name: "gender" } %>
   <%= s.input :loc, label: "Location", input_html: { name: "loc" } %>
+  <%= s.input :dob, label: "Date of Birth", input_html: { name: "dob" } %>
+
   <%= s.button :wrapped, "Search", :cancel => searches_path %>
 <% end %>
 
