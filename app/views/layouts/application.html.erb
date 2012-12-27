@@ -12,12 +12,14 @@
 </head>
 <body>
 
-<div class="navbar navbar-inner navbar-static-top">
+<div class="navbar navbar-static-top">
+  <div class="navbar-inner">
     <p class="navbar-text pull-right">
       <%= yield(:authn) %>
     </p>
     <a class="brand" href="/">PDMP Spike</a>
     <%= yield(:topnav) %>
+  </div>
 </div>
 
 <% if flash[:notice] %>

@@ -1,0 +1,29 @@
+
+/* override bootstrap to make the navbar and buttons "flat" */
+.navbar-inner {
+    background-image: none;
+    border: 0;
+    border-bottom: 1px solid #D4D4D4;
+    border-radius: 0;
+}
+.navbar-static-top .navbar-inner {
+    box-shadow: 0 0;
+}
+
+.btn {
+    background-image: none;
+}
+
+/* eliminate the big grey form-actions bar */
+.form-actions {
+    background-color: inherit;
+    border: none;
+}
+
+/* make text a little bigger than the default */
+body {
+    font-size: 16px;
+}
+body.rails_admin {
+    padding: 0;
+}
