@@ -183,8 +183,25 @@ For example:
     <link rel="alternate" type="application/atom+xml" href="/people/8"/>
     <link rel="root" type="application/xml" href="/people/8/root.xml"/>
 
+Each Atom element may also contain a patientInformation element in the
+urn:hl7-org:greencda:c32 namespace.  This element contains patient
+demographic data and can be useful for distinguishing among patients
+when more than one match a set of search criteria.
+
 Document Retrieval
 ------------------
+
+As mentioned in the search section above, Atom search results contain
+two links to each patient that matches the search criteria.  The link
+of type "application/xml" points to an hData root.xml document that
+describes the format of the documents for that patient.  The link of
+type "application/atom+xml" points to an Atom feed of the documents
+for that patient.  The atom feed format is specified by the "hData
+RESTBinding for RLUS" specification.
+
+An SRPP patient record must contain at least three sections:
+"demographic", "medication" and "c32".  It may have more sections if
+there are more patient records available.
 
 Security
 --------
@@ -220,9 +237,78 @@ Examples
       <InputEncoding>UTF-8</InputEncoding>
     </OpenSearchDescription>
 
+### Example Atom Search Results
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+    <id>tag:localhost,2005:/search?family=Patient</id>
+    <link rel="alternate" type="text/html" href="http://localhost:3000"/>
+    <link rel="self" type="application/atom+xml" href="http://localhost:3000/search?family=Patient"/>
+    <opensearch:totalResults>1</opensearch:totalResults>
+    <opensearch:startIndex>1</opensearch:startIndex>
+    <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+    <opensearch:Query role="request" startPage="1" searchTerms=""/>
+    <entry>
+    <id>tag:localhost,2005:Person/6</id>
+    <published>2012-12-26T19:31:32Z</published>
+    <updated>2012-12-26T19:31:32Z</updated>
+    <link rel="alternate" type="text/html" href="/people/6"/>
+    <link rel="alternate" type="application/atom+xml" href="/people/6"/>
+    <link rel="root" type="application/xml" href="/people/6/root.xml"/>
+    <title>Mr John Patient</title>
+    <patientInformation xmlns="urn:hl7-org:greencda:c32">
+    <id>6</id>
+    <name>
+    <title>Mr</title>
+    <givenName>John</givenName>
+    <familyName>Patient</familyName>
+    </name>
+    <address>
+    <street>123 Elm Street</street>
+    <city>Indianappolis</city>
+    <state>IN</state>
+    <postalCode>46202</postalCode>
+    </address>
+    <telecom use="HP" preferred="true" value="FIXME"/>
+    <gender codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" code="M" displayName="Male">
+    <originalText>Male</originalText>
+    </gender>
+    <dateOfBirth>1975-01-01</dateOfBirth>
+    </patientInformation>
+    </entry>
+    </feed>
+
+### Example Patient Atom Feed
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
+    <id>tag:localhost,2005:/people/2</id>
+    <link rel="alternate" type="text/html" href="http://localhost:3000"/>
+    <link rel="self" type="application/atom+xml" href="http://localhost:3000/people/2"/>
+    <entry>
+    <id>/c32</id>
+    <link rel="alternate" type="text/html" href="/people/2/c32"/>
+    <link rel="alternate" type="application/atom+xml" href="/people/2/c32"/>
+    <title>c32</title>
+    </entry>
+    <entry>
+    <id>/demographic</id>
+    <link rel="alternate" type="text/html" href="/people/2/demographic"/>
+    <link rel="alternate" type="application/atom+xml" href="/people/2/demographic"/>
+    <title>demographic</title>
+    </entry>
+    <entry>
+    <id>/medication</id>
+    <link rel="alternate" type="text/html" href="/people/2/medication"/>
+    <link rel="alternate" type="application/atom+xml" href="/people/2/medication"/>
+    <title>medication</title>
+    </entry>
+    </feed>
+
 References
 ----------
 
 Atom Syndication Format (RFC 4287): [http://tools.ietf.org/html/rfc4287](http://tools.ietf.org/html/rfc4287)<br/>
+hData REST Binding for RLUS: [http://www.projecthdata.org/standardization.html](http://www.projecthdata.org/standardization.html)</br>
 OpenSearch 1.1: [http://www.opensearch.org/Specifications/OpenSearch/1.1](http://www.opensearch.org/Specifications/OpenSearch/1.1)</br>
-XML Schema Date datatype: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)
+XML Schema Date datatype: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)</br>
