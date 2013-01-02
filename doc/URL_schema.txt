@@ -1,4 +1,4 @@
-PDMP "Spike" URL schema, based on hData
+PDMP "Spike" URL schema, based on OpenSearch and hData
 
 Authentication
 ==============
@@ -11,8 +11,12 @@ Patient Query/Match
 
 GET
 ---
+/ - link to OpenSearch description document (in the header link with type="application/opensearchdescription+xml")
+/search/description - OpenSearch description document
 /people - HTML index of people
 /people - Atom feed of people
+ HTTP header "Accept: application/atom+xml"
+/search - Search for patients (using URL schema in the OpenSearch description document)
  HTTP header "Accept: application/atom+xml"
 
 Patient Data Retrieval
