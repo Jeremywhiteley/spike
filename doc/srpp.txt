@@ -201,10 +201,21 @@ RESTBinding for RLUS" specification.
 
 An SRPP patient record must contain at least three sections:
 "demographic", "medication" and "c32".  It may have more sections if
-there are more patient records available.
+there are more patient records available.  Each of the three required
+sections will have one document.  The "demographic" section is for
+patient demographic information.  The "medication" section is for the
+patient's medication history.  The "c32" section contains a document
+that is composed of both the demographics and medication history.
 
 Security
 --------
+
+All SRPP traffic should be carried over encrypted connections, such as
+Transport Layer Security (TLS).
+
+SRPP hosts must implement an authentication protocol at least as
+secure as HTTP Basic Authentication.  They may implement more
+sophisticated authentication protocols such as OpenID Connect.
 
 Examples
 --------
@@ -278,7 +289,7 @@ Examples
     </entry>
     </feed>
 
-### Example Patient Atom Feed
+### Example Patient "Base URL" Atom Feed
 
     <?xml version="1.0" encoding="UTF-8"?>
     <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
@@ -310,5 +321,7 @@ References
 
 Atom Syndication Format (RFC 4287): [http://tools.ietf.org/html/rfc4287](http://tools.ietf.org/html/rfc4287)<br/>
 hData REST Binding for RLUS: [http://www.projecthdata.org/standardization.html](http://www.projecthdata.org/standardization.html)</br>
+OpenID Connect: [http://openid.net/connect/](http://openid.net/connect/)</br>
 OpenSearch 1.1: [http://www.opensearch.org/Specifications/OpenSearch/1.1](http://www.opensearch.org/Specifications/OpenSearch/1.1)</br>
+Transport Layer Security (TLS): [http://tools.ietf.org/html/rfc5246](http://tools.ietf.org/html/rfc5246)</br>
 XML Schema Date datatype: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)</br>
