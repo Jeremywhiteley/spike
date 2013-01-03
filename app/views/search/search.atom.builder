@@ -6,7 +6,7 @@ atom_feed({'xmlns:opensearch' => 'http://a9.com/-/spec/opensearch/1.1/'}) do |fe
   @people.each do |person|
     feed.entry(person, url: person_path(person)) do |entry|
       entry.link rel: "alternate", type: Mime::Atom, href: person_path(person)
-      entry.link rel: "root", type: Mime::XML, href: root_document_path(person)
+      entry.link rel: "root", type: Mime::XML, href: hdata_root_path(person)
       entry.title person.name
       xml.patientInformation 'xmlns' => 'urn:hl7-org:greencda:c32' do
         xml << render(partial: "sections/patient_info", formats: [:xml], locals: {person: person})
