@@ -18,7 +18,7 @@ PdmpSpike::Application.routes.draw do
   get "search/description" => "search#description", as: "description", :format => :opensearchdescription
   get "search" => "search#search", as: "searches"
 
-  # land on the people list page (at least for the time being)
-  root :to => 'people#index'
+  # land on the search page
+  root :to => "search#search"
 
 end
