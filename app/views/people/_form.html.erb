@@ -1,15 +1,5 @@
 <%= simple_form_for @person do |f| %>
-  <% if @person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
-
-      <ul>
-      <% @person.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.error_notification %>
 
   <%= f.input :title %>
   <%= f.input :given_name %>
@@ -22,5 +12,6 @@
   <%= a.input :state, :collection => state_codes %>
   <%= a.input :postal_code %>
   <% end %>
+
   <%= f.button :wrapped, :cancel => people_path %>
 <% end %>

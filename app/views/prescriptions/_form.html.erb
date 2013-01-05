@@ -1,15 +1,5 @@
 <%= simple_form_for @prescription do |f| %>
-  <% if @prescription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
-
-      <ul>
-      <% @prescription.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.error_notification %>
 
     <%= f.input :patient_id, :collection => Person.all.collect {|p| [ p.name, p.id ] } %>
     <%= f.input :prescriber_id, :collection => Person.all.collect {|p| [ p.name, p.id ] } %>
