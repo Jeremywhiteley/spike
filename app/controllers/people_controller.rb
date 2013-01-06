@@ -10,6 +10,10 @@ class PeopleController < ApplicationController
     end
   end
 
+  def hdata_root
+    @person = Person.find(params[:id])
+  end
+
   # GET /people/1
   # GET /people/1.atom
   def show

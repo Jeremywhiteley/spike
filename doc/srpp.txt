@@ -201,10 +201,21 @@ RESTBinding for RLUS" specification.
 
 An SRPP patient record must contain at least three sections:
 "demographic", "medication" and "c32".  It may have more sections if
-there are more patient records available.
+there are more patient records available.  Each of the three required
+sections will have one document.  The "demographic" section is for
+patient demographic information.  The "medication" section is for the
+patient's medication history.  The "c32" section contains a document
+that is composed of both the demographics and medication history.
 
 Security
 --------
+
+All SRPP traffic should be carried over encrypted connections, such as
+Transport Layer Security (TLS).
+
+SRPP hosts must implement an authentication protocol at least as
+secure as HTTP Basic Authentication.  They may implement more
+sophisticated authentication protocols such as OpenID Connect.
 
 Examples
 --------
@@ -240,69 +251,86 @@ Examples
 ### Example Atom Search Results
 
     <?xml version="1.0" encoding="UTF-8"?>
-    <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
-    <id>tag:localhost,2005:/search?family=Patient</id>
-    <link rel="alternate" type="text/html" href="http://localhost:3000"/>
-    <link rel="self" type="application/atom+xml" href="http://localhost:3000/search?family=Patient"/>
-    <opensearch:totalResults>1</opensearch:totalResults>
-    <opensearch:startIndex>1</opensearch:startIndex>
-    <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
-    <opensearch:Query role="request" startPage="1" searchTerms=""/>
-    <entry>
-    <id>tag:localhost,2005:Person/6</id>
-    <published>2012-12-26T19:31:32Z</published>
-    <updated>2012-12-26T19:31:32Z</updated>
-    <link rel="alternate" type="text/html" href="/people/6"/>
-    <link rel="alternate" type="application/atom+xml" href="/people/6"/>
-    <link rel="root" type="application/xml" href="/people/6/root.xml"/>
-    <title>Mr John Patient</title>
-    <patientInformation xmlns="urn:hl7-org:greencda:c32">
-    <id>6</id>
-    <name>
-    <title>Mr</title>
-    <givenName>John</givenName>
-    <familyName>Patient</familyName>
-    </name>
-    <address>
-    <street>123 Elm Street</street>
-    <city>Indianappolis</city>
-    <state>IN</state>
-    <postalCode>46202</postalCode>
-    </address>
-    <telecom use="HP" preferred="true" value="FIXME"/>
-    <gender codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" code="M" displayName="Male">
-    <originalText>Male</originalText>
-    </gender>
-    <dateOfBirth>1975-01-01</dateOfBirth>
-    </patientInformation>
-    </entry>
+    <feed xmlns="http://www.w3.org/2005/Atom" xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xml:lang="en-US">
+      <id>tag:localhost,2005:/search?family=Patient</id>
+      <link rel="alternate" type="text/html" href="http://localhost:3000"/>
+      <link rel="self" type="application/atom+xml" href="http://localhost:3000/search?family=Patient"/>
+      <opensearch:totalResults>1</opensearch:totalResults>
+      <opensearch:startIndex>1</opensearch:startIndex>
+      <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+      <opensearch:Query role="request" startPage="1" searchTerms=""/>
+      <entry>
+        <id>tag:localhost,2005:Person/6</id>
+        <published>2012-12-26T19:31:32Z</published>
+        <updated>2012-12-26T19:31:32Z</updated>
+        <link rel="alternate" type="text/html" href="/people/6"/>
+        <link rel="alternate" type="application/atom+xml" href="/people/6"/>
+        <link rel="root" type="application/xml" href="/people/6/root.xml"/>
+        <title>Mr John Patient</title>
+        <patientInformation xmlns="urn:hl7-org:greencda:c32">
+          <id>6</id>
+          <name>
+            <title>Mr</title>
+            <givenName>John</givenName>
+            <familyName>Patient</familyName>
+          </name>
+          <address>
+            <street>123 Elm Street</street>
+            <city>Indianappolis</city>
+            <state>IN</state>
+            <postalCode>46202</postalCode>
+          </address>
+          <telecom use="HP" preferred="true" value="FIXME"/>
+          <gender codeSystem="2.16.840.1.113883.5.1" codeSystemName="AdministrativeGender" code="M" displayName="Male">
+            <originalText>Male</originalText>
+          </gender>
+          <dateOfBirth>1975-01-01</dateOfBirth>
+        </patientInformation>
+      </entry>
     </feed>
 
-### Example Patient Atom Feed
+### Example Patient "Base URL" Atom Feed
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-US">
+      <id>tag:localhost,2005:/people/2</id>
+      <link rel="alternate" type="text/html" href="http://localhost:3000"/>
+      <link rel="self" type="application/atom+xml" href="http://localhost:3000/people/2"/>
+      <entry>
+        <id>/c32</id>
+        <link rel="alternate" type="text/html" href="/people/2/c32"/>
+        <link rel="alternate" type="application/atom+xml" href="/people/2/c32"/>
+        <title>c32</title>
+      </entry>
+      <entry>
+        <id>/demographic</id>
+        <link rel="alternate" type="text/html" href="/people/2/demographic"/>
+        <link rel="alternate" type="application/atom+xml" href="/people/2/demographic"/>
+        <title>demographic</title>
+      </entry>
+      <entry>
+        <id>/medication</id>
+        <link rel="alternate" type="text/html" href="/people/2/medication"/>
+        <link rel="alternate" type="application/atom+xml" href="/people/2/medication"/>
+        <title>medication</title>
+      </entry>
+    </feed>
+
+### Example Patient C32 Section Atom Feed
 
     <?xml version="1.0" encoding="UTF-8"?>
     <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
-    <id>tag:localhost,2005:/people/2</id>
-    <link rel="alternate" type="text/html" href="http://localhost:3000"/>
-    <link rel="self" type="application/atom+xml" href="http://localhost:3000/people/2"/>
-    <entry>
-    <id>/c32</id>
-    <link rel="alternate" type="text/html" href="/people/2/c32"/>
-    <link rel="alternate" type="application/atom+xml" href="/people/2/c32"/>
-    <title>c32</title>
-    </entry>
-    <entry>
-    <id>/demographic</id>
-    <link rel="alternate" type="text/html" href="/people/2/demographic"/>
-    <link rel="alternate" type="application/atom+xml" href="/people/2/demographic"/>
-    <title>demographic</title>
-    </entry>
-    <entry>
-    <id>/medication</id>
-    <link rel="alternate" type="text/html" href="/people/2/medication"/>
-    <link rel="alternate" type="application/atom+xml" href="/people/2/medication"/>
-    <title>medication</title>
-    </entry>
+      <id>tag:localhost,2005:/people/2/c32</id>
+      <link rel="alternate" type="text/html" href="http://localhost:3000"/>
+      <link rel="self" type="application/atom+xml" href="http://localhost:3000/people/2/c32"/>
+      <entry>
+        <id>tag:localhost,2005:Person/2</id>
+        <published>2012-11-26T19:18:14Z</published>
+        <updated>2012-12-19T22:27:52Z</updated>
+        <link rel="alternate" type="text/html" href="/people/2/c32/c32"/>
+        <link rel="c32" type="application/xml" href="/people/2/c32/c32"/>
+        <title>Monsignor another test person c32</title>
+      </entry>
     </feed>
 
 References
@@ -310,5 +338,7 @@ References
 
 Atom Syndication Format (RFC 4287): [http://tools.ietf.org/html/rfc4287](http://tools.ietf.org/html/rfc4287)<br/>
 hData REST Binding for RLUS: [http://www.projecthdata.org/standardization.html](http://www.projecthdata.org/standardization.html)</br>
+OpenID Connect: [http://openid.net/connect/](http://openid.net/connect/)</br>
 OpenSearch 1.1: [http://www.opensearch.org/Specifications/OpenSearch/1.1](http://www.opensearch.org/Specifications/OpenSearch/1.1)</br>
+Transport Layer Security (TLS): [http://tools.ietf.org/html/rfc5246](http://tools.ietf.org/html/rfc5246)</br>
 XML Schema Date datatype: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)</br>

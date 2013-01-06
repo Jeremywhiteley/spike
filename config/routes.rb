@@ -4,7 +4,7 @@ PdmpSpike::Application.routes.draw do
 
   devise_for :users
 
-  get "people/:id/root.xml" => "people#root", :as => :root_document, :format => :xml
+  get "people/:id/root" => "people#hdata_root", as: "hdata_root", :format => :xml
 
   get "people/:id/c32" => "sections#c32", as: "person_c32_section"
   get "people/:id/c32/c32" => "sections#c32", as: "person_c32_doc"
