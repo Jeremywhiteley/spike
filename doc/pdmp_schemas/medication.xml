@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <medication xmlns="urn:hl7-org:greencda:c32"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="urn:hl7-org:greencda:c32 file:/C:/Users/akling/Documents/Retrieved%20from%20Backup/akling/Documents/pdmp/technology%20framework/ccdaschema/medication.xsd">
+ xsi:schemaLocation="urn:hl7-org:greencda:c32 file:/C:/Users/akling/Documents/Retrieved%20from%20Backup/akling/Documents/pdmp/technology%20framework/ccdaschema/medication_1.2.xsd">
     <id>id1</id>
     <code code="993755" codeSystem="2.16.840.1.113883.6.88" codeSystemName="RXNorm" displayName="APAP 120 MG / codeine phosphate 12 MG per 5 ML Oral Solution">
         <originalText>
@@ -48,13 +48,22 @@
             <id>1234567890</id>
             <name>
                 <title>Dr</title>
-                <givenName>Primary</givenName>
-                <familyName>Provider</familyName>
+                <givenName>Pharmacist</givenName>
+                <familyName>One</familyName>
             </name>
         </pharmacist>
     </fulfillmentHistory>
     <orderInformation orderNumber="HTP6655zz" fills="2">
         <quantityOrdered amount="4" unit="oz"/>
         <orderedDateTime>2006-05-04T18:13:51.0Z</orderedDateTime>
+        <expirationDateTime>2006-05-04T18:13:51.0Z</expirationDateTime>
+        <prescriber>
+            <id>doc123456789</id>
+            <name>
+                <title>Dr</title>
+                <givenName>Primary</givenName>
+                <familyName>Provider</familyName>
+            </name>
+        </prescriber>
     </orderInformation>
 </medication>

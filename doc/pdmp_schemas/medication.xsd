@@ -45,7 +45,7 @@
 		  <xs:element name="vehicle" type="gc32:code" minOccurs="0" />
 		  <xs:element name="patientInstructions" type="xs:string" minOccurs="0" />
 		  <xs:element name="fulfillmentInstructions" type="xs:string" minOccurs="0" />
-		  <xs:element name="fulfillmentHistory" minOccurs="0" maxOccurs="unbounded">
+		  <xs:element name="fulfillmentHistory" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="prescriptionNumber" type="xs:string" minOccurs="0"/>
@@ -71,6 +71,7 @@
 								<xs:element name="quantityOrdered" type="gc32:quantity" minOccurs="0"/>
 								<xs:element name="orderedDateTime" type="xs:dateTime" minOccurs="0"/>
 								<xs:element name="expirationDateTime" type="xs:dateTime" minOccurs="0"/>
+								<xs:element name="prescriber" type="gc32:person" minOccurs="0" />
 							</xs:sequence>
 							<xs:attribute name="orderNumber" type="xs:string"/>
 							<xs:attribute name="fills" type="xs:integer"/>
