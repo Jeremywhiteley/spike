@@ -4,6 +4,9 @@ PdmpSpike::Application.routes.draw do
 
   devise_for :users
 
+  get "extension/medication" => "sections#medication_meta", as: "medication_meta"
+  get "extension/demographic" => "sections#demographic_meta", as: "demographic_meta"
+
   get "people/:id/root" => "people#hdata_root", as: "hdata_root", :format => :xml
 
   get "people/:id/c32" => "sections#c32", as: "person_c32_section"
