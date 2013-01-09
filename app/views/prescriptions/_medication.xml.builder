@@ -46,4 +46,13 @@
   xml.orderInformation "orderNumber" => "FIXME", "fills" => "FIXME" do
     xml.quantityOrdered "amount" => "FIXME", "unit" => "FIXME"
     xml.orderedDateTime "FIXME date"
+    xml.expirationDateTime "FIXME date"
+    xml.prescriber do
+      xml.id rx.prescriber.id
+      xml.name do
+        xml.title rx.prescriber.title
+        xml.givenName rx.prescriber.given_name
+        xml.familyName rx.prescriber.family_name
+      end
+    end
   end
