@@ -29,23 +29,15 @@ GET
  HTTP header "Accept: application/atom+xml"
 /people/{id}/root.xml - person's hData root document
 
-Each person has 3 sections: c32 (composed of both demographics and
-medication in a single document), demographic, and medication.
+Each person has 1 section called "srpp" which contains 3 documents: a
+full patient report (composed of both demographics and medication in a
+single document), demographic, and medication.
 
-/people/{id}/c32 - person's c32 section
-/people/{id}/c32 - person's c32 section atom feed
+/people/{id}/srpp - person's c32 section atom feed
  HTTP header "Accept: application/atom+xml"
-/people/{id}/c32/c32 - person's composed (i.e. all-in-one) green c32 record
+/people/{id}/srpp/report - person's composed (i.e. all-in-one) green CCD record
  HTTP header "Accept: application/xml"
-
-/people/{id}/demographic - person's demographic section
-/people/{id}/demographic - person's demographic section atom feed
- HTTP header "Accept: application/atom+xml"
-/people/{id}/demographic/demographic - person's green demographic record
+/people/{id}/srpp/demographic - person's green demographic record
  HTTP header "Accept: application/xml"
-
-/people/{id}/medication - person's medication section
-/people/{id}/medication - person's medication section atom feed
- HTTP header "Accept: application/atom+xml"
 /prescriptions/{id} - green medication record for one prescription
  HTTP header "Accept: application/xml"
