@@ -6,8 +6,9 @@ perform xpath parsing.
 
 For clarity I don't show the authentication credentials in each query
 but you'll need to add them to each wget invocation.  For example,
-you'll want to use something like "--user=admin@pdmp.example.org" to
-use HTTP basic authentication.  You can add the credentials to each
+you'll want to use something like
+"--user=admin@pdmp.example.org --password=your_password"
+to use HTTP basic authentication.  You can add the credentials to each
 command line or to the wget startup file (.wgetrc).
 
 Get the root page (which contains a link to the opensearch description
@@ -15,13 +16,13 @@ document in the header):
 $ wget --quiet 'http://localhost:3000/' --output-document=-
 
 Get the root page and print the opensearch description URL):
-$ wget --quiet 'http://localhost:3000/' --output-document=- | xmlstarlet sel -t --value-of '/html/head/link[@type=&quot;application/opensearchdescription+xml&quot;]/@href'
+$ wget --quiet 'http://localhost:3000/' --output-document=- | xmlstarlet sel -t --value-of '/html/head/link[@type="application/opensearchdescription+xml"]/@href'
 
 Get the OpenSearch description document:
 $ wget --quiet http://localhost:3000/search/description --output-document=-
 
 Get the OpenSearch description document and print the search URL:
-$ wget --quiet http://localhost:3000/search/description --output-document=- | xmlstarlet sel -N os='http://a9.com/-/spec/opensearch/1.1/' -t -v '/os:OpenSearchDescription/os:Url[@type=&quot;application/atom+xml&quot;]/@template'
+$ wget --quiet http://localhost:3000/search/description --output-document=- | xmlstarlet sel -N os='http://a9.com/-/spec/opensearch/1.1/' -t -v '/os:OpenSearchDescription/os:Url[@type="application/atom+xml"]/@template'
 
 Query for patients whose location contains "IN":
 $ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/search?loc=IN' --output-document=-
@@ -30,16 +31,15 @@ Get the Atom root feed belonging to the person with the ID of "2":
 $ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2' --output-document=-
 
 Get the Atom root feed belonging to the person with the ID of "2" and
-print the c32 section feed path:
-$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2' --output-document=-| xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry[atom:title[.=&quot;c32&quot;]]/atom:link[@type=&quot;application/atom+xml&quot;]'/@href
-/people/2/c32
+print the srpp section feed path:
+$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2' --output-document=-| xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry[atom:title[.="srpp"]]/atom:link[@type="application/atom+xml"]'/@href
 
-Get the c32 section feed  belonging to the person with the ID of "2":
-$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2/c32' --output-document=-
+Get the srpp section feed  belonging to the person with the ID of "2":
+$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2/srpp' --output-document=-
 
-Get the c32 section feed belonging to the person with the ID of "2"
-and print the c32 document feed path:
-$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2/c32' --output-document=- | xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry/atom:link[@rel=&quot;c32&quot;]/@href'
+Get the srpp section feed belonging to the person with the ID of "2"
+and print the report document feed path:
+$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2/srpp' --output-document=- | xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry/atom:link[@rel="srpp"]/@href'
 
-Get the c32 belonging to the person with the ID of "2":
-$ wget --quiet --header='Accept: application/xml' 'http://localhost:3000/people/2/c32/c32' --output-document=-
+Get the report belonging to the person with the ID of "2":
+$ wget --quiet --header='Accept: application/xml' 'http://localhost:3000/people/2/srpp/report' --output-document=-
