@@ -1,6 +1,13 @@
 class SectionsController < ApplicationController
   before_filter :find_person, except: [:medication_meta, :demographic_meta]
 
+  def srpp
+  end
+
+  def report
+    render "c32"
+  end
+
   def c32
   end
 
