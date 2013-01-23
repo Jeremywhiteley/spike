@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gc32="urn:hl7-org:greencda:c32" targetNamespace="urn:hl7-org:greencda:c32" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gccd="urn:hl7-org:greenccda:ccd:pdmp" targetNamespace="urn:hl7-org:greenccda:ccd:pdmp" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:include schemaLocation="data_types.xsd"/>
   <xs:element name="medication">
   	<xs:complexType>
     <xs:complexContent>
-      <xs:extension base="gc32:entry">
+      <xs:extension base="gccd:entry">
         <xs:sequence>
           <xs:element name="freeTextSig" type="xs:string" />
-          <xs:element name="effectiveTime" type="gc32:interval" />
-          <xs:element name="route" type="gc32:code" minOccurs="0"/>
-		  <xs:element name="dose" type="gc32:quantity" minOccurs="0"/>
+          <xs:element name="effectiveTime" type="gccd:interval" />
+          <xs:element name="route" type="gccd:code" minOccurs="0"/>
+		  <xs:element name="dose" type="gccd:quantity" minOccurs="0"/>
 		  <xs:element name="doseIndicator" type="xs:string" minOccurs="0" />
-		  <xs:element name="site" type="gc32:code" minOccurs="0" />
+		  <xs:element name="site" type="gccd:code" minOccurs="0" />
 		  <xs:element name="doseRestriction" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="numerator" type="gc32:quantity"/>
-								<xs:element name="denominator" type="gc32:quantity"/>
+								<xs:element name="numerator" type="gccd:quantity"/>
+								<xs:element name="denominator" type="gccd:quantity"/>
 							</xs:sequence>
 						</xs:complexType>
 		  </xs:element>
 		  <xs:element name="administrationTiming">
 					    <xs:complexType>
 					      <xs:sequence>
-					        <xs:element name="period" type="gc32:quantity" />
+					        <xs:element name="period" type="gccd:quantity" />
 					      </xs:sequence>
 					      <xs:attribute name="institutionSpecified" type="xs:boolean" />
 					    </xs:complexType>
@@ -37,12 +37,12 @@
         			</xs:sequence>
         		</xs:complexType>
         	</xs:element>	
-		  <xs:element name="productForm" type="gc32:code" minOccurs="0"/>
-		  <xs:element name="deliveryMethod" type="gc32:code" minOccurs="0"/>
-<!--		  <xs:element name="type" type="gc32:code" minOccurs="0"/>-->
-<!--		  <xs:element name="statusOfMedication" type="gc32:code" minOccurs="0"/>-->
-		  <xs:element name="indication" type="gc32:code" minOccurs="0" />
-		  <xs:element name="vehicle" type="gc32:code" minOccurs="0" />
+		  <xs:element name="productForm" type="gccd:code" minOccurs="0"/>
+		  <xs:element name="deliveryMethod" type="gccd:code" minOccurs="0"/>
+<!--		  <xs:element name="type" type="gccd:code" minOccurs="0"/>-->
+<!--		  <xs:element name="statusOfMedication" type="gccd:code" minOccurs="0"/>-->
+		  <xs:element name="indication" type="gccd:code" minOccurs="0" />
+		  <xs:element name="vehicle" type="gccd:code" minOccurs="0" />
 		  <xs:element name="patientInstructions" type="xs:string" minOccurs="0" />
 		  <xs:element name="fulfillmentInstructions" type="xs:string" minOccurs="0" />
 		  <xs:element name="fulfillmentHistory" maxOccurs="unbounded">
@@ -50,10 +50,10 @@
 							<xs:sequence>
 								<xs:element name="prescriptionNumber" type="xs:string" minOccurs="0"/>
 								<xs:element name="dispenseDate" type="xs:dateTime" minOccurs="0"/>
-								<xs:element name="quantityDispensed" type="gc32:quantity" minOccurs="0"/>
-								<xs:element name="pharmacy" type="gc32:organization" />
+								<xs:element name="quantityDispensed" type="gccd:quantity" minOccurs="0"/>
+								<xs:element name="pharmacy" type="gccd:organization" />
 <!--added to support PDMP - maps to assignedPerson								-->
-								<xs:element name="pharmacist" type="gc32:person" />	
+								<xs:element name="pharmacist" type="gccd:person" />	
 							</xs:sequence>
 							<xs:attribute name="fillStatus">
 							  <xs:simpleType>
@@ -68,10 +68,10 @@
 		  <xs:element name="orderInformation" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="quantityOrdered" type="gc32:quantity" minOccurs="0"/>
+								<xs:element name="quantityOrdered" type="gccd:quantity" minOccurs="0"/>
 								<xs:element name="orderedDateTime" type="xs:dateTime" minOccurs="0"/>
 								<xs:element name="expirationDateTime" type="xs:dateTime" minOccurs="0"/>
-								<xs:element name="prescriber" type="gc32:person" minOccurs="0" />
+								<xs:element name="prescriber" type="gccd:person" minOccurs="0" />
 							</xs:sequence>
 							<xs:attribute name="orderNumber" type="xs:string"/>
 							<xs:attribute name="fills" type="xs:integer"/>

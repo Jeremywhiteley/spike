@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<record xmlns="urn:hl7-org:greencda:c32"
+<record xmlns="urn:hl7-org:greenccda:ccd:pdmp"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="urn:hl7-org:greencda:c32 file:/C:/Users/akling/Documents/Retrieved%20from%20Backup/akling/Documents/pdmp/technology%20framework/ccdaschema/patient.xsd">
+ xsi:schemaLocation="urn:hl7-org:greenccda:ccd:pdmp file:/C:/Users/akling/Documents/Retrieved%20from%20Backup/akling/Documents/pdmp/technology%20framework/ccdaschema/patient.xsd">
     <patientInformation>
         <id>mrn33446xx</id>
         <name>

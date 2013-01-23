@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gc32="urn:hl7-org:greencda:c32" targetNamespace="urn:hl7-org:greencda:c32" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gccd="urn:hl7-org:greenccda:ccd:pdmp" targetNamespace="urn:hl7-org:greenccda:ccd:pdmp" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:complexType name="entry">
     <xs:sequence>
       <xs:element name="id" type="xs:string" />
-			<xs:element name="code" type="gc32:code" />
+			<xs:element name="code" type="gccd:code" />
 			<xs:element name="status" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -15,10 +15,10 @@
   </xs:complexType>
 	<xs:complexType name="code">
 		<xs:complexContent>
-			<xs:extension base="gc32:simpleCode">
+			<xs:extension base="gccd:simpleCode">
 	  	<xs:sequence>
   		  <xs:element name="originalText" />
-  		  <xs:element name="translation" minOccurs="0" maxOccurs="unbounded" type="gc32:simpleCode" />
+  		  <xs:element name="translation" minOccurs="0" maxOccurs="unbounded" type="gccd:simpleCode" />
   		</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -43,7 +43,7 @@
 			<xs:element name="state" minOccurs="0"/>
 			<xs:element name="postalCode" minOccurs="0"/>
 		</xs:sequence>
-		<!--<xs:attribute name="nullFlavor" type="gc32:nullFlavorType"/>-->
+		<!--<xs:attribute name="nullFlavor" type="gccd:nullFlavorType"/>-->
 	</xs:complexType>
 	<xs:complexType name="organization">
 		<xs:annotation>
@@ -52,8 +52,8 @@
 		<xs:sequence>
 			<xs:element name="id" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="name" type="xs:string" minOccurs="0"/>
-			<xs:element name="address" type="gc32:address" maxOccurs="unbounded"/>
-			<xs:element name="telecom" type="gc32:telecom" maxOccurs="unbounded"/>
+			<xs:element name="address" type="gccd:address" maxOccurs="unbounded"/>
+			<xs:element name="telecom" type="gccd:telecom" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="personalName">
@@ -69,12 +69,12 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="id" type="xs:string" />
-			<xs:element name="name" type="gc32:personalName" minOccurs="0" />
+			<xs:element name="name" type="gccd:personalName" minOccurs="0" />
 			<xs:element name="npi" type="xs:string" minOccurs="0" />
 	    <xs:element name="speciality" type="xs:string" />
-	    <xs:element name="address" type="gc32:address" maxOccurs="unbounded"/>
-			<xs:element name="telecom" type="gc32:telecom" maxOccurs="unbounded"/>
-	    <xs:element name="organization" type="gc32:organization" />
+	    <xs:element name="address" type="gccd:address" maxOccurs="unbounded"/>
+			<xs:element name="telecom" type="gccd:telecom" maxOccurs="unbounded"/>
+	    <xs:element name="organization" type="gccd:organization" />
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="telecom">
@@ -84,11 +84,11 @@
 	</xs:complexType>
 	<xs:complexType name="result">
 		<xs:complexContent>
-			<xs:extension base="gc32:entry">
+			<xs:extension base="gccd:entry">
 				<xs:sequence>
 					<xs:element name="effectiveTime" type="xs:dateTime" />
-					<xs:element name="value" type="gc32:quantity" />
-					<xs:element name="interpretation" type="gc32:simpleCode" minOccurs="0"/>
+					<xs:element name="value" type="gccd:quantity" />
+					<xs:element name="interpretation" type="gccd:simpleCode" minOccurs="0"/>
 					<xs:element name="referenceRange" minOccurs="0" />
 				</xs:sequence>
 			</xs:extension>
@@ -97,9 +97,9 @@
 	<xs:complexType name="person">
 		<xs:sequence>
 			<xs:element name="id" type="xs:string" />
-			<xs:element name="name" type="gc32:personalName" minOccurs="0" />
-			<xs:element name="address" type="gc32:address" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="telecom" type="gc32:telecom" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="name" type="gccd:personalName" minOccurs="0" />
+			<xs:element name="address" type="gccd:address" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="telecom" type="gccd:telecom" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	

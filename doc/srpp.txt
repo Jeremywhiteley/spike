@@ -184,7 +184,7 @@ For example:
     <link rel="root" type="application/xml" href="/people/8/root.xml"/>
 
 Each Atom element may also contain a patientInformation element in the
-urn:hl7-org:greencda:c32 namespace.  This element contains patient
+urn:hl7-org:greenccda:ccd:pdmp namespace.  This element contains patient
 demographic data and can be useful for distinguishing among patients
 when more than one match a set of search criteria.
 
@@ -286,7 +286,7 @@ Examples
         <link rel="alternate" type="application/atom+xml" href="/people/6"/>
         <link rel="root" type="application/xml" href="/people/6/root.xml"/>
         <title>Mr John Patient</title>
-        <patientInformation xmlns="urn:hl7-org:greencda:c32">
+        <patientInformation xmlns="urn:hl7-org:greenccda:ccd:pdmp">
           <id>6</id>
           <name>
             <title>Mr</title>
