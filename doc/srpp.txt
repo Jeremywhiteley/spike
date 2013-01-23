@@ -22,7 +22,7 @@ around this problem by connecting to an interstate PDMP data sharing
 system (such as PMPi) but had to abandon some pilot tests because we
 couldn't integrate with the local PDMP.
 
-Based on this experience, ONC and SMAHSA developed a testbed to
+Based on this experience, ONC and SAMHSA developed a testbed to
 demonstrate an integration between a PDMP and an EMR.  This document
 describes the protocol used for that demonstration.  It's based on
 existing healthcare and internet standard protocols.
@@ -81,19 +81,19 @@ The OpenSearch description document describes how a client should
 query an OpenSearch server.  The format is [documented on the
 OpenSearch
 website](http://www.opensearch.org/Specifications/OpenSearch/1.1#OpenSearch_description_document)
-but is extended by SRPP to accomodate specific search terms.
+but is extended by SRPP to accommodate specific search terms.
 
 An example SRPP-compliant OpenSearch description document is provided
 below in the "Examples" section.
 
 ### Search Terms
 
-SRPP extends OpenSearch to allow for precisely targetted searches.
+SRPP extends OpenSearch to allow for precisely targeted searches.
 SRPP search URL's support the following search terms:
 
 #### multi
 
-The "multi" search term allows for broad unfocussed searches.  Search
+The "multi" search term allows for broad unfocused searches.  Search
 keywords associated with "multi" will match given name, family name,
 and all address fields.
 
@@ -133,7 +133,7 @@ Example:
 
     dob=1939-02-29
 
-would match a person born on Febrary 29, 1929.
+would match a person born on February 29, 1929.
 
 #### loc
 
@@ -197,7 +197,7 @@ of type "application/xml" points to an hData root.xml document that
 describes the format of the documents for that patient.  The link of
 type "application/atom+xml" points to an Atom feed of the documents
 for that patient.  The atom feed format is specified by the "hData
-RESTBinding for RLUS" specification.
+REST Binding for RLUS" specification.
 
 An SRPP patient record must contain at least one section: "srpp".  It
 may have more sections if there are more patient records available.
@@ -382,4 +382,4 @@ hData REST Binding for RLUS: [http://www.projecthdata.org/standardization.html](
 OpenID Connect: [http://openid.net/connect/](http://openid.net/connect/)</br>
 OpenSearch 1.1: [http://www.opensearch.org/Specifications/OpenSearch/1.1](http://www.opensearch.org/Specifications/OpenSearch/1.1)</br>
 Transport Layer Security (TLS): [http://tools.ietf.org/html/rfc5246](http://tools.ietf.org/html/rfc5246)</br>
-XML Schema Date datatype: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)</br>
+XML Schema Date data type: [http://www.w3.org/TR/xmlschema-2/#date](http://www.w3.org/TR/xmlschema-2/#date)</br>
