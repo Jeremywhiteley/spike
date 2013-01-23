@@ -105,7 +105,7 @@ class PeopleControllerTest < AtomTestCase
     request.env['HTTP_ACCEPT'] = 'application/atom+xml'
     get :show, id: @person
     assert_atom_success
-    assert_atom_result_count atom_results, 4
+    assert_atom_result_count atom_results, 1
   end
 
   test "get person hData root.xml" do

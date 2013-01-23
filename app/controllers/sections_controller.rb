@@ -5,13 +5,6 @@ class SectionsController < ApplicationController
   end
 
   def report
-    render "c32"
-  end
-
-  def c32
-  end
-
-  def medication
   end
 
   def medication_meta
