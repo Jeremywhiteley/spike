@@ -18,6 +18,31 @@
   <%= @prescription.when_written %>
 </p>
 
+<% if @prescription.fulfillments.any? %>
+<p><b>Fulfillments</b>
+  <table class="table table-condensed">
+    <tr>
+      <th>Rx Number</th>
+      <th>When Filled</th>
+      <th>Pharmacy</th>
+      <th>Pharmacist</th>
+      <th>Quantity</th>
+      <th>Status</th>
+    </tr>
+
+  <% @prescription.fulfillments.each do |fill| %>
+  <tr>
+    <td><%= fill.prescription_number %></td>
+    <td><%= fill.when_filled %></td>
+    <td><%= fill.pharmacy.name %></td>
+    <td><%= link_to fill.pharmacist.name, person_path(fill.pharmacist) %></td>
+    <td><%= fill.quantity_amount %> <%= fill.quantity_unit %></td>
+    <td><%= fill.fill_status %></td>
+  </tr>
+  <% end %>
+  </table>
+</p>
+<% end %>
 
 <%= link_to 'Edit', edit_prescription_path(@prescription) %> |
 <%= link_to 'Back', prescriptions_path %>

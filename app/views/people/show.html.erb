@@ -49,6 +49,32 @@
 </p>
 <% end %>
 
+<% if @person.fulfillments.any? %>
+<p><b>Fulfillments</b>
+  <table class="table table-condensed">
+    <tr>
+      <th>Rx Number</th>
+      <th>When Filled</th>
+      <th>Pharmacy</th>
+      <th>Prescription</th>
+      <th>Quantity</th>
+      <th>Status</th>
+    </tr>
+
+  <% @person.fulfillments.each do |fill| %>
+  <tr>
+    <td><%= fill.prescription_number %></td>
+    <td><%= fill.when_filled %></td>
+    <td><%= fill.pharmacy.name %></td>
+    <td><%= link_to fill.prescription.id, prescription_path(fill.prescription) %></td>
+    <td><%= fill.quantity_amount %> <%= fill.quantity_unit %></td>
+    <td><%= fill.fill_status %></td>
+  </tr>
+  <% end %>
+  </table>
+</p>
+<% end %>
+
 <p>
 <%= link_to edit_person_path(@person) do %>
 <i class="icon-edit"></i> Edit
