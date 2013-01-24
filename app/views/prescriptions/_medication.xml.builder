@@ -19,30 +19,38 @@
   xml.productForm "code" => "FIXME", "codeSystem" => "2.16.840.1.113883.3.26.1.1", "codeSystemName" => "NCI Thesaurus", "displayName" => "FIXME" do
     xml.originalText "FIXME"
   end
-  xml.fulfillmentHistory "fillStatus" => "FIXME" do
-    xml.prescriptionNumber "FIXME"
-    xml.dispenseDate "FIXME date"
-    xml.quantityDispensed "amount" => "FIXME", "unit" => "FIXME"
+
+  rx.fulfillments.each do |fill|
+  xml.fulfillmentHistory "fillStatus" => fill.fill_status do
+    xml.prescriptionNumber fill.prescription_number
+    xml.dispenseDate fill.when_filled
+    xml.quantityDispensed "amount" => fill.quantity_amount, "unit" => fill.quantity_unit
     xml.pharmacy do
-      xml.id "FIXME"
-      xml.name "FIXME"
+      xml.id fill.pharmacy.id
+      xml.name fill.pharmacy.name
+      if fill.pharmacy.address
       xml.address do
-        xml.street "FIXME"
-        xml.city "FIXME"
-        xml.state "FIXME"
-        xml.postalCode "FIXME"
+        xml.street fill.pharmacy.address.street
+        xml.city fill.pharmacy.address.city
+        xml.state fill.pharmacy.address.state
+        xml.postalCode fill.pharmacy.address.postal_code
       end
-      xml.telecom "use" => "WP", "value" => "FIXME", "preferred" => "false"
+      end
+      if !fill.pharmacy.phone.empty?
+        xml.telecom "use" => "WP", "value" => fill.pharmacy.phone, "preferred" => "false"
+      end
     end
     xml.pharmacist do
-      xml.id "FIXME"
+      xml.id fill.pharmacist.id
       xml.name do
-        xml.title "FIXME"
-        xml.givenName "FIXME"
-        xml.familyName "FIXME"
+        xml.title fill.pharmacist.title
+        xml.givenName fill.pharmacist.given_name
+        xml.familyName fill.pharmacist.family_name
       end
     end
   end
+  end
+
   xml.orderInformation "orderNumber" => "FIXME", "fills" => "FIXME" do
     xml.quantityOrdered "amount" => "FIXME", "unit" => "FIXME"
     xml.orderedDateTime "FIXME date"
