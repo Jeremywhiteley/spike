@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: General Pharmacy
   phone: MyString
-  address_id: 1
 
 two:
   name: MyString
-  phone: MyString
-  address_id: 1
+  address: three

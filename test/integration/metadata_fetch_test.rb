@@ -8,10 +8,10 @@ class MetadataFetchTest < ActionDispatch::IntegrationTest
     # get people atom feed
     get "/people", {}, "HTTP_ACCEPT" => 'application/atom+xml'
     assert_response :success
+    index_feed = Hash.from_xml response.body
+    assert_equal 4, index_feed["feed"]["entry"].size
 
     # follow it to person one's root.xml
-    index_feed = Hash.from_xml response.body
-    assert_equal 3, index_feed["feed"]["entry"].size
     person_root_path = index_feed["feed"]["entry"].select{|h|h["title"]=="Mr TestPatient One"}[0]["link"].select{|h|h["rel"]=="root"}[0]["href"]
     get person_root_path
     assert_response :success

@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
   belongs_to :address
   has_many :prescriptions_received, :class_name => Prescription, :foreign_key => :patient_id
   has_many :prescriptions_written, :class_name => Prescription, :foreign_key => :prescriber_id
-  has_many :prescriptions_fulfilled, :class_name => Fulfillment, :foreign_key => :pharmacist_id
+  has_many :fulfillments, :class_name => Fulfillment, :foreign_key => :pharmacist_id
   accepts_nested_attributes_for :address, :reject_if => :all_blank
 
   def name

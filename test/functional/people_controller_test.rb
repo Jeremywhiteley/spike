@@ -11,7 +11,7 @@ class PeopleControllerTest < AtomTestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:people)
-    assert_equal 3, assigns(:people).size
+    assert_equal 4, assigns(:people).size
   end
 
   test "should constrain index based on search params" do
@@ -98,7 +98,7 @@ class PeopleControllerTest < AtomTestCase
     get :index
     assert_atom_success
     rss = atom_results
-    assert_atom_result_count rss, 3
+    assert_atom_result_count rss, 4
   end
 
   test "get person root Atom feed" do

@@ -1,17 +1,24 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
   when_filled: 2013-01-24 11:27:43
   quantity_unit: MyString
   quantity_amount: 9.99
-  prescription_id: 1
-  pharmacist_id: 1
-  pharmacy_id: 1
+  prescription: one
+  pharmacist: four
+  pharmacy: one
 
 two:
   when_filled: 2013-01-24 11:27:43
   quantity_unit: MyString
   quantity_amount: 9.99
-  prescription_id: 1
-  pharmacist_id: 1
-  pharmacy_id: 1
+  prescription: two
+  pharmacist: four
+  pharmacy: two
+
+three:
+  when_filled: 2013-01-24 11:27:43
+  quantity_unit: MyString
+  quantity_amount: 9.99
+  prescription: two
+  pharmacist: four
+  pharmacy: two

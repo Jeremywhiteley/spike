@@ -11,3 +11,9 @@ two:
   city: Testtown
   state: AA
   postal_code: 98765-4321
+
+three:
+  street: 27 Pharmacy Street
+  city: Testtown
+  state: AA
+  postal_code: 98765-4321

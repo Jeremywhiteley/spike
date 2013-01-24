@@ -19,3 +19,8 @@ three:
   family_name: Three
   sex: UNK
   address: two
+
+four:
+  given_name: TestPharmacist
+  family_name: Four
+  sex: M

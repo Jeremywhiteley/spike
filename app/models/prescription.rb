@@ -6,4 +6,5 @@ class Prescription < ActiveRecord::Base
   belongs_to :patient, :class_name => Person
   belongs_to :prescriber, :class_name => Person
   belongs_to :drug
+  has_many :fulfillments
 end
