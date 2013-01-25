@@ -4,10 +4,10 @@
     xml.translation "code" => rx.drug.ndc_code, "codeSystem" => "2.16.840.1.113883.6.69", "codeSystemName" => "NDC", "displayName" => rx.drug.ndc_name
   end
   xml.status "FIXME"
-  xml.freeTextSig "FIXME"
+  xml.freeTextSig rx.free_text_sig
   xml.effectiveTime do
-    xml.start "FIXME date"
-    xml.end "FIXME date"
+    xml.start rx.effective_start
+    xml.end rx.effective_end
   end
   xml.dose "amount" => rx.drug.dose_amount, "unit" => rx.drug.dose_unit
   xml.administrationTiming "institutionSpecified" => "FIXME" do
@@ -36,7 +36,7 @@
         xml.postalCode fill.pharmacy.address.postal_code
       end
       end
-      if !fill.pharmacy.phone.empty?
+      if !fill.pharmacy.phone.blank?
         xml.telecom "use" => "WP", "value" => fill.pharmacy.phone, "preferred" => "false"
       end
     end
@@ -51,10 +51,10 @@
   end
   end
 
-  xml.orderInformation "orderNumber" => "FIXME", "fills" => "FIXME" do
-    xml.quantityOrdered "amount" => "FIXME", "unit" => "FIXME"
-    xml.orderedDateTime "FIXME date"
-    xml.expirationDateTime "FIXME date"
+  xml.orderInformation "orderNumber" => rx.order_number, "fills" => rx.fills_count do
+    xml.quantityOrdered "amount" => rx.quantity_amount, "unit" => rx.quantity_units
+    xml.orderedDateTime rx.when_written
+    xml.expirationDateTime rx.expiration
     xml.prescriber do
       xml.id rx.prescriber.id
       xml.name do
