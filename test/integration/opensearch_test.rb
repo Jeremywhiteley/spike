@@ -23,8 +23,8 @@ class OpenSearchTest < ActionDispatch::IntegrationTest
     # ensure correct number of people
     assert_equal "1", results.xpath("/xmlns:feed/opensearch:totalResults/text()").text
     # ensure correct patientInformation
-    assert_equal people(:one).family_name, results.xpath("//gccd:patientInformation/gccd:name/gccd:familyName/text()", "gccd" => "urn:hl7-org:greenccda:ccd:pdmp").text
-    assert_equal people(:one).address.street, results.xpath("//gccd:patientInformation/gccd:address/gccd:street/text()", "gccd" => "urn:hl7-org:greenccda:ccd:pdmp").text
+    assert_equal people(:one).family_name, results.xpath("//gccd:patientInformation/gccd:name/gccd:familyName/text()", "gccd" => "urn:hl7-org:greencda:ccd:pdmp").text
+    assert_equal people(:one).address.street, results.xpath("//gccd:patientInformation/gccd:address/gccd:street/text()", "gccd" => "urn:hl7-org:greencda:ccd:pdmp").text
   end
 
 end

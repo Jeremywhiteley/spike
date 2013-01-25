@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gccd="urn:hl7-org:greenccda:ccd:pdmp" targetNamespace="urn:hl7-org:greenccda:ccd:pdmp" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gccd="urn:hl7-org:greencda:ccd:pdmp" targetNamespace="urn:hl7-org:greencda:ccd:pdmp" elementFormDefault="qualified" attributeFormDefault="unqualified">
   <xs:complexType name="entry">
     <xs:sequence>
       <xs:element name="id" type="xs:string" />
