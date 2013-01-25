@@ -1,7 +1,7 @@
   xml.id rx.id
-  xml.code "code" => "FIXME", "codeSystem" => "2.16.840.1.113883.6.88", "codeSystemName" => "RXNorm", "displayName" => "FIXME" do
+  xml.code "code" => rx.drug.rxnorm_code, "codeSystem" => "2.16.840.1.113883.6.88", "codeSystemName" => "RXNorm", "displayName" => rx.drug.rxnorm_name do
     xml.originalText "FIXME"
-    xml.translation "code" => "FIXME", "codeSystem" => "2.16.840.1.113883.6.69", "codeSystemName" => "NDC", "displayName" => "FIXME"
+    xml.translation "code" => rx.drug.ndc_code, "codeSystem" => "2.16.840.1.113883.6.69", "codeSystemName" => "NDC", "displayName" => rx.drug.ndc_name
   end
   xml.status "FIXME"
   xml.freeTextSig "FIXME"
@@ -9,7 +9,7 @@
     xml.start "FIXME date"
     xml.end "FIXME date"
   end
-  xml.dose "amount" => "FIXME", "unit" => "FIXME"
+  xml.dose "amount" => rx.drug.dose_amount, "unit" => rx.drug.dose_unit
   xml.administrationTiming "institutionSpecified" => "FIXME" do
     xml.period "amount" => "FIXME", "unit" => "FIXME"
   end
