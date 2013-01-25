@@ -3,7 +3,7 @@ require 'date'
 class Person < ActiveRecord::Base
   validates :family_name, :presence => true
   validates :sex_id, :presence => true
-  attr_accessible :title, :given_name, :family_name, :sex_id, :birthdate, :address_id, :address_attributes
+  attr_accessible :title, :given_name, :family_name, :sex_id, :birthdate, :address_id, :address_attributes, :phone
   belongs_to :sex
   belongs_to :address
   has_many :prescriptions_received, :class_name => Prescription, :foreign_key => :patient_id

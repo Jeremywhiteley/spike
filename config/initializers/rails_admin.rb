@@ -252,6 +252,7 @@ RailsAdmin.config do |config|
     field :family_name
     field :sex
     field :birthdate
+    field :phone
     field :address
     field :prescriptions_received
     field :prescriptions_written

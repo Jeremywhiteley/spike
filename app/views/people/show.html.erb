@@ -7,6 +7,9 @@
 <% if @person.address %>
   <b>Address:</b><%= @person.address %><br/>
 <% end %>
+<% if !@person.phone.blank? %>
+  <b>Phone:</b> <%= @person.phone %><br/>
+<% end %>
 </p>
 
 <% if @person.prescriptions_received.any? %>

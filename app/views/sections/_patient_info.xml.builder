@@ -12,7 +12,9 @@ if person.address
     xml.postalCode person.address.postal_code
   end
 end
-xml.telecom "use" => "HP", "preferred" => "true", "value" => "FIXME"
+if !person.phone.blank?
+  xml.telecom "use" => "WP", "value" => person.phone, "preferred" => "false"
+end
 xml.gender "codeSystem" => person.sex.code_system, "codeSystemName" => person.sex.code_system_name, "code" => person.sex.code, "displayName" => person.sex.display_name do
   xml.originalText person.sex.original_text
 end
