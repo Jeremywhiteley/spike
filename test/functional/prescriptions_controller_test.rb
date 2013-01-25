@@ -19,7 +19,7 @@ class PrescriptionsControllerTest < ActionController::TestCase
 
   test "should create prescription" do
     assert_difference('Prescription.count') do
-      post :create, prescription: { drug_id: @prescription.drug_id, patient_id: @prescription.patient_id, prescriber_id: @prescription.prescriber_id, when_written: @prescription.when_written }
+      post :create, prescription: { drug_id: @prescription.drug_id, patient_id: @prescription.patient_id, prescriber_id: @prescription.prescriber_id, when_written: @prescription.when_written, order_number: @prescription.order_number, quantity_amount: @prescription.quantity_amount, quantity_units: @prescription.quantity_units, effective_start: @prescription.effective_start, effective_end: @prescription.effective_end }
     end
 
     assert_redirected_to prescription_path(assigns(:prescription))

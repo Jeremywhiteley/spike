@@ -5,9 +5,19 @@ one:
   prescriber: :two
   drug: :one
   when_written: 2012-11-21 13:12:52
+  order_number: rx_one
+  quantity_amount: 30
+  quantity_units: mg
+  effective_start: 2012-11-21 13:12:52
+  effective_end: 2012-11-21 13:12:52
 
 two:
   patient: :one
   prescriber: :two
   drug: :two
   when_written: 2012-11-21 13:12:52
+  order_number: rx_two
+  quantity_amount: 30
+  quantity_units: mg
+  effective_start: 2012-11-21 13:12:52
+  effective_end: 2012-11-21 13:12:52
