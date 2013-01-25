@@ -36,7 +36,7 @@ class PrescriptionsControllerTest < ActionController::TestCase
     assert_response :success
     assert_equal "application/xml", response.content_type
     rx = Hash.from_xml response.body
-    assert_equal @prescription.id.to_s, rx["medication"]["id"]
+    assert_match @prescription.id.to_s, rx["medication"]["id"]
   end
 
   test "should get edit" do

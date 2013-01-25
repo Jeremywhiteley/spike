@@ -1,4 +1,4 @@
-  xml.id rx.id
+  xml.id prescription_url(rx)
   xml.code "code" => rx.drug.rxnorm_code, "codeSystem" => "2.16.840.1.113883.6.88", "codeSystemName" => "RXNorm", "displayName" => rx.drug.rxnorm_name do
     xml.originalText "FIXME"
     xml.translation "code" => rx.drug.ndc_code, "codeSystem" => "2.16.840.1.113883.6.69", "codeSystemName" => "NDC", "displayName" => rx.drug.ndc_name
@@ -41,7 +41,7 @@
       end
     end
     xml.pharmacist do
-      xml.id fill.pharmacist.id
+      xml.id person_url(fill.pharmacist)
       xml.name do
         xml.title fill.pharmacist.title
         xml.givenName fill.pharmacist.given_name
@@ -56,7 +56,7 @@
     xml.orderedDateTime rx.when_written
     xml.expirationDateTime rx.expiration
     xml.prescriber do
-      xml.id rx.prescriber.id
+      xml.id person_url(rx.prescriber)
       xml.name do
         xml.title rx.prescriber.title
         xml.givenName rx.prescriber.given_name

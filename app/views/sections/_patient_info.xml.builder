@@ -1,4 +1,4 @@
-xml.id person.id
+xml.id person_url(person)
 xml.name do
   xml.title person.title
   xml.givenName person.given_name
