@@ -6,8 +6,8 @@
   xml.status "FIXME"
   xml.freeTextSig rx.free_text_sig
   xml.effectiveTime do
-    xml.start rx.effective_start
-    xml.end rx.effective_end
+    xml.start rx.effective_start.try(:xmlschema)
+    xml.end rx.effective_end.try(:xmlschema)
   end
   xml.dose "amount" => rx.drug.dose_amount, "unit" => rx.drug.dose_unit
   xml.administrationTiming "institutionSpecified" => "FIXME" do
@@ -23,7 +23,7 @@
   rx.fulfillments.each do |fill|
   xml.fulfillmentHistory "fillStatus" => fill.fill_status do
     xml.prescriptionNumber fill.prescription_number
-    xml.dispenseDate fill.when_filled
+    xml.dispenseDate fill.when_filled.try(:xmlschema)
     xml.quantityDispensed "amount" => fill.quantity_amount, "unit" => fill.quantity_unit
     xml.pharmacy do
       xml.id fill.pharmacy.id
@@ -53,8 +53,8 @@
 
   xml.orderInformation "orderNumber" => rx.order_number, "fills" => rx.fills_count do
     xml.quantityOrdered "amount" => rx.quantity_amount, "unit" => rx.quantity_units
-    xml.orderedDateTime rx.when_written
-    xml.expirationDateTime rx.expiration
+    xml.orderedDateTime rx.when_written.try(:xmlschema)
+    xml.expirationDateTime rx.expiration.try(:xmlschema)
     xml.prescriber do
       xml.id person_url(rx.prescriber)
       xml.name do

@@ -18,4 +18,4 @@ end
 xml.gender "codeSystem" => person.sex.code_system, "codeSystemName" => person.sex.code_system_name, "code" => person.sex.code, "displayName" => person.sex.display_name do
   xml.originalText person.sex.original_text
 end
-xml.dateOfBirth person.birthdate
+xml.dateOfBirth person.birthdate.try(:strftime, '%Y-%m-%d')
