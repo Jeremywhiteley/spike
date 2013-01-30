@@ -12,7 +12,7 @@ atom_feed({'xmlns:opensearch' => 'http://a9.com/-/spec/opensearch/1.1/'}) do |fe
       entry.author {|a| a.name "n/a" }
       entry.title person.name
       xml.patientInformation 'xmlns' => 'urn:hl7-org:greencda:ccd:pdmp' do
-        xml << render(partial: "sections/patient_info", formats: [:xml], locals: {person: person})
+        xml << render(partial: "sections/patient_info", formats: [:pdmp], locals: {person: person})
       end
     end
   end
