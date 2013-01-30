@@ -8,11 +8,6 @@ class PrescriptionsController < ApplicationController
   # GET /prescriptions/1.xml
   def show
     @prescription = Prescription.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml
-    end
   end
 
   # GET /prescriptions/new

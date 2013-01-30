@@ -174,7 +174,7 @@ OpenSearch "totalResults", "startIndex", "itemsPerPage", and "Query"
 elements.
 
 Each Atom "entry" element must contain at least two "link" elements,
-one with a type of "application/xml"" pointing to the patient's hData
+one with a type of "application/xml" pointing to the patient's hData
 root.xml document, and one with a type of "application/atom+xml"
 pointing to the patient's Atom feed.
 
@@ -206,6 +206,9 @@ report, which is composed of demographics and medication history
 sections, and the two sections as standalone documents.  The
 "demographic" section contains patient demographic information.  The
 "medication" section contains the patient's medication history.
+
+SRPP documents are requested using the
+"application/vnd.mitre.pdmp+xml" MIME type.
 
 Document Format
 ---------------
@@ -343,7 +346,7 @@ Examples
         <published>2012-11-21T18:26:04Z</published>
         <updated>2012-12-21T13:59:17Z</updated>
         <link rel="alternate" type="text/html" href="/people/1/srpp/report"/>
-        <link rel="report" type="application/xml" href="/people/1/srpp/report"/>
+        <link rel="report" type="application/vnd.mitre.pdmp+xml" href="/people/1/srpp/report"/>
         <title>Test Patient report</title>
         <author>
           <name>n/a</name>
@@ -354,7 +357,7 @@ Examples
         <published>2012-11-21T18:26:04Z</published>
         <updated>2012-12-21T13:59:17Z</updated>
         <link rel="alternate" type="text/html" href="/people/1/srpp/demographic"/>
-        <link rel="demo" type="application/xml" href="/people/1/srpp/demographic"/>
+        <link rel="demo" type="application/vnd.mitre.pdmp+xml" href="/people/1/srpp/demographic"/>
         <title>Test Patient demographic</title>
         <author>
           <name>n/a</name>
@@ -365,7 +368,7 @@ Examples
         <published>2012-11-21T18:16:22Z</published>
         <updated>2012-11-21T18:29:29Z</updated>
         <link rel="alternate" type="text/html" href="/prescriptions/1"/>
-        <link rel="med" type="application/xml" href="/prescriptions/1"/>
+        <link rel="med" type="application/vnd.mitre.pdmp+xml" href="/prescriptions/1"/>
         <title>medication 1</title>
         <author>
           <name>n/a</name>
