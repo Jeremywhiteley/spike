@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gccd="urn:hl7-org:greencda:ccd:pdmp:2" targetNamespace="urn:hl7-org:greencda:ccd:pdmp:2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:include schemaLocation="data_types.2.xsd"/>
+<xs:element name="medicationOrder" >
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="orderInformation">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="quantityOrdered" type="gccd:quantity" minOccurs="0"/>
+            <xs:element name="orderedDateTime" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="expirationDateTime" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="orderNumberId" type="xs:string"/>
+            <xs:element name="freeTextSig" type="xs:string" minOccurs="0"/>
+            <xs:element name="refillNumberAuthorized" type="xs:integer" minOccurs="0"/>
+            <xs:element name="prescriber" type="gccd:person" minOccurs="0" />
+            <xs:element name="administrationTiming">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="period" type="gccd:quantity" />
+                </xs:sequence>
+                <xs:attribute name="institutionSpecified" type="xs:boolean" />
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dose" type="gccd:quantity" minOccurs="0"/>
+            <xs:element name="doseIndicator" type="xs:string" minOccurs="0" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="medicationInformation">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="gccd:entry">
+              <xs:sequence>
+                <xs:element name="productForm" type="gccd:code" minOccurs="0"/>
+              </xs:sequence>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="fullfillmentHistory" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="prescriptionNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="dispenseDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="quantityDispensed" type="gccd:quantity" minOccurs="0"/>
+            <xs:element name="refillNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="pharmacy" type="gccd:organization" />
+            <!--added to support PDMP - maps to assignedPerson -->
+            <xs:element name="pharmacist" type="gccd:person" />
+          </xs:sequence>
+          <xs:attribute name="fillStatus">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="completed" />
+                <xs:enumeration value="aborted" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+</xs:schema>

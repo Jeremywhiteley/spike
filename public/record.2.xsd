@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gccd="urn:hl7-org:greencda:ccd:pdmp:2" targetNamespace="urn:hl7-org:greencda:ccd:pdmp:2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="data_types.2.xsd"/>
+  <xs:include schemaLocation="medicationOrder.2.xsd"/>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="gccd:patientInformation" />
+        <xs:element name="medications">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="gccd:medicationOrder" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
