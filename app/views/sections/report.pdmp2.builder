@@ -5,14 +5,12 @@ xml.record :xmlns => "urn:hl7-org:greencda:ccd:pdmp:2", "xmlns:xsi" => "http://w
     xml << render(partial: "patient_info", locals: {person: @person})
   end
 
-  xml.medications do
-    @person.prescriptions_received.each do |rx|
-    xml.medicationOrder do
+  @person.prescriptions_received.each do |rx|
+  xml.medicationOrder do
 
-      xml << render(partial: "prescriptions/medication", locals: {rx: rx})
+    xml << render(partial: "prescriptions/medication", locals: {rx: rx})
 
-    end
-    end
+  end
   end
 
 end
