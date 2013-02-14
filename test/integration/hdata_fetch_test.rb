@@ -28,7 +28,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
     # get full report
     srpp_feed = Hash.from_xml response.body
     assert_equal Array, srpp_feed["feed"]["entry"].class
-    ccda_doc = srpp_feed["feed"]["entry"].select{|h|h["title"].match "report"}[0]["link"].select{|h|h["type"]=="application/vnd.mitre.pdmp+xml"}[0]["href"]
+    ccda_doc = srpp_feed["feed"]["entry"].select{|h|h["title"].match "report"}[0]["link"].select{|h|h["type"]=="application/vnd.mitre.pdmp.2+xml"}[0]["href"]
     get ccda_doc, {}, "HTTP_ACCEPT" => 'application/vnd.mitre.pdmp+xml'
     assert_response :success
 
@@ -37,7 +37,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
     assert_equal people(:one).family_name, ccda_data["record"]["patientInformation"]["name"]["familyName"]
 
     # get demographic document
-    demographic_doc = srpp_feed["feed"]["entry"].select{|h|h["title"].match "demographic"}[0]["link"].select{|h|h["type"]=="application/vnd.mitre.pdmp+xml"}[0]["href"]
+    demographic_doc = srpp_feed["feed"]["entry"].select{|h|h["title"].match "demographic"}[0]["link"].select{|h|h["type"]=="application/vnd.mitre.pdmp.2+xml"}[0]["href"]
     get demographic_doc, {}, "HTTP_ACCEPT" => 'application/vnd.mitre.pdmp+xml'
     assert_response :success
 
