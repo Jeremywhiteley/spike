@@ -29,7 +29,7 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
     srpp_feed = Hash.from_xml response.body
     assert_equal Array, srpp_feed["feed"]["entry"].class
     ccda_doc = srpp_feed["feed"]["entry"].select{|h|h["title"].match "report"}[0]["link"].select{|h|h["type"]=="application/vnd.mitre.pdmp.2+xml"}[0]["href"]
-    get ccda_doc, {}, "HTTP_ACCEPT" => 'application/vnd.mitre.pdmp+xml'
+    get ccda_doc, {}, "HTTP_ACCEPT" => 'application/vnd.mitre.pdmp.2+xml'
     assert_response :success
 
     # check full report
@@ -38,12 +38,12 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
 
     # get demographic document
     demographic_doc = srpp_feed["feed"]["entry"].select{|h|h["title"].match "demographic"}[0]["link"].select{|h|h["type"]=="application/vnd.mitre.pdmp.2+xml"}[0]["href"]
-    get demographic_doc, {}, "HTTP_ACCEPT" => 'application/vnd.mitre.pdmp+xml'
+    get demographic_doc, {}, "HTTP_ACCEPT" => 'application/vnd.mitre.pdmp.2+xml'
     assert_response :success
 
     # check demographic document
     demographic_data = Hash.from_xml response.body
-    assert_equal people(:one).family_name, demographic_data["record"]["patientInformation"]["name"]["familyName"]
+    assert_equal people(:one).family_name, demographic_data["patientInformation"]["name"]["familyName"]
 
   end
 
