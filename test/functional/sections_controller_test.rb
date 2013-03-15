@@ -34,4 +34,12 @@ class SectionsControllerTest < AtomTestCase
     assert_equal @person.sex.code, demo["patientInformation"]["gender"]
   end
 
+  test "get ncpdp report XML" do
+    request.env['HTTP_ACCEPT'] = 'application/vnd.ncpdp.script.10+xml'
+    get :report, id: @person
+    assert_response :success
+    assert_equal "application/vnd.ncpdp.script.10+xml", response.content_type
+    demo = Hash.from_xml response.body
+  end
+
 end
