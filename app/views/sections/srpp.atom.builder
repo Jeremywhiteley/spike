@@ -3,6 +3,7 @@ atom_feed do |feed|
   feed.updated @person.updated_at
   feed.entry(@person, url: person_report_doc_path(@person)) do |entry|
     entry.link rel: "report", type: "application/vnd.mitre.pdmp.2+xml", href: person_report_doc_path(@person)
+    entry.link rel: "report", type: "application/vnd.ncpdp.script.10+xml", href: person_report_doc_path(@person)
     entry.title @person.name + " report"
     entry.author {|a| a.name "n/a" }
   end
