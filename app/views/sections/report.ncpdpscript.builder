@@ -78,7 +78,7 @@ xml.Message :xmlns => "http://www.ncpdp.org/schema/SCRIPT", "version" => "010", 
               end
               unless fill.pharmacy.phone.blank?
                 xml.CommunicationNumbers do
-                    xml.Communication do
+                  xml.Communication do
                     xml.Number fill.pharmacy.phone
                     xml.Qualifier "FIXME"
                   end
