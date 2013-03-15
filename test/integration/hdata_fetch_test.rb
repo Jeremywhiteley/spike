@@ -45,6 +45,15 @@ class HdataFetchTest < ActionDispatch::IntegrationTest
     demographic_data = Hash.from_xml response.body
     assert_equal people(:one).family_name, demographic_data["patientInformation"]["name"]["familyName"]
 
+    # get ncpdp report
+    ncpdp_url = srpp_feed.xpath("/xmlns:feed/xmlns:entry/xmlns:link[@rel=\"report\" and @type=\"application/vnd.ncpdp.script.10+xml\"]/@href").text
+    get ncpdp_url, {}, "HTTP_ACCEPT" => 'application/vnd.ncpdp.script.10+xml'
+    assert_response :success
+
+    # check ncpdp report
+    ccda_data = Hash.from_xml response.body
+    assert_equal people(:one).family_name, ccda_data["Message"]["Body"]["RxHistoryResponse"]["Patient"]["Name"]["LastName"]
+
   end
 
 end
