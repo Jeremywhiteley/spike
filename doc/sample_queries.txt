@@ -39,7 +39,7 @@ $ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/pe
 
 Get the srpp section feed belonging to the person with the ID of "2"
 and print the report document feed path:
-$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2/srpp' --output-document=- | xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry/atom:link[@rel="srpp"]/@href'
+$ wget --quiet --header='Accept: application/atom+xml' 'http://localhost:3000/people/2/srpp' --output-document=- | xmlstarlet sel -N atom='http://www.w3.org/2005/Atom' -t -v '/atom:feed/atom:entry/atom:link[@rel="report" and @type="application/vnd.ncpdp.script.10+xml"]/@href'
 
 Get the report belonging to the person with the ID of "2":
-$ wget --quiet --header='Accept: application/xml' 'http://localhost:3000/people/2/srpp/report' --output-document=-
+$ wget --quiet --header='Accept: application/vnd.ncpdp.script.10+xml' 'http://localhost:3000/people/2/srpp/report' --output-document=-
