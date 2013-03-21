@@ -11,4 +11,14 @@ class SearchTest < ActiveModel::TestCase
     assert @model.new_record?
   end
 
+  def test_not_provided
+    assert !@model.attributes_provided?
+  end
+
+  def test_provided
+    @model = Search.new family: "foo"
+    assert @model.attributes_provided?
+    assert_equal "foo", @model.family
+  end
+
 end

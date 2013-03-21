@@ -4,8 +4,10 @@ class SearchController < ApplicationController
     @search = Search.new(params)
     @people = Person.advanced_search(@search)
 
+    flash.now[:alert] = "No Results Found" if @search.attributes_provided? && @people.blank?
+
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.atom
     end
   end
