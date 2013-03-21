@@ -131,9 +131,9 @@ only a date part and no timezone.
 
 Example:
 
-    dob=1939-02-29
+    dob=1939-02-28
 
-would match a person born on February 29, 1929.
+would match a person born on February 28, 1939.
 
 #### loc
 
