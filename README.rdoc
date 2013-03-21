@@ -23,20 +23,26 @@ limitations under the License.
 
 == Getting Started
 
-1. Clone the repository
+Spike installation and configuration is typical for a Rails application:
 
-2. Run "bundle install"
+1. Clone the repository.
 
-3. Run "rake db:migrate"
+2. Run "bundle install" to install the components that Spike depends on.
 
-4. Go to http://localhost:3000/
+3. Run "rake db:create" then run "rake db:migrate" to create the database and schema.
 
-5. Add your value-added features. You might find the following resources handy:
+4. Run "rake db:seed" to add reference data to the database.  This command will create an administrative user ID and password and print them on the console.
+
+5. Run "rails server" to start the application.
+
+6. Go to http://localhost:3000/ and use the user ID and password from step 4 to sign in.
+
+7. Add your value-added features. You might find the following resources handy:
 
 * The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
 * Ruby on Rails Tutorial Book: http://www.railstutorial.org/
 
-6. If you'd like, please contribute bug fixes and enhancements back to
+8. If you'd like, please contribute bug fixes and enhancements back to
 this project so others can benefit from them (and you can benefit from
 having a smaller patch kit).
 
